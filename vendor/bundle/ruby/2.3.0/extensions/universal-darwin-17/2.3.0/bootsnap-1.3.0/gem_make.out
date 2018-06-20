@@ -1,0 +1,23 @@
+current directory: /Users/tsumichan/todo-app/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.3.0/ext/bootsnap
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/ruby -r ./siteconf20180620-90489-1nev48c.rb extconf.rb
+creating Makefile
+
+current directory: /Users/tsumichan/todo-app/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/tsumichan/todo-app/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+bootsnap.c:405:17: warning: comparison of constant 100000000000 with expression of type 'ssize_t' (aka 'long') is always false [-Wtautological-constant-out-of-range-compare]
+  if (data_size > 100000000000) {
+      ~~~~~~~~~ ^ ~~~~~~~~~~~~
+1 warning generated.
+linking shared-object bootsnap/bootsnap.bundle
+ld: warning: directory not found for option '-L/BuildRoot/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.Internal.sdk/usr/local/libressl/lib'
+ld: warning: directory not found for option '-L/BuildRoot/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.Internal.sdk/usr/local/lib'
+ld: warning: directory not found for option '-L/BuildRoot/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.Internal.sdk/usr/local/libressl/lib'
+ld: warning: directory not found for option '-L/BuildRoot/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.Internal.sdk/usr/local/lib'
+
+current directory: /Users/tsumichan/todo-app/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20180620-90489-1faiz1j/bootsnap
