@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -16,7 +17,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-vendor/*
 
 # Ignore uploaded files in development
 /storage/*
