@@ -1,0 +1,20 @@
+h1 タスクを追加する
+
+= form_for @task do |f|
+  div
+    = f.label :title, "タスク名"
+    = f.text_field :title
+  div
+    = f.label :description, "タスクの説明"
+    = f.text_area :description
+  div
+    = f.label :due_at, "期限"
+    = f.text_field :due_at
+  div
+    = f.label :status, "ステータス"
+    = f.text_field :status
+  div
+    = f.label :priority, "優先度"
+    = f.text_field :priority
+  div
+    = f.submit "登録"
