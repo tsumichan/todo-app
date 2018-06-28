@@ -1,0 +1,14 @@
+ul
+  li
+    = @task.title
+  li
+    = @task.description
+  li
+    = @task.due_at
+  li
+    = @task.status
+  li
+    = @task.priority
+
+div
+  = link_to "戻る", :back
