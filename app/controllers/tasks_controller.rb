@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :get_task, only: [:show, :edit, :update]
+
   def index
     @tasks = Task.all
   end
@@ -17,15 +19,12 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def edit
-    @task = Task.find(params[:id])
   end
 
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to root_path
     else
@@ -37,5 +36,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description, :due_at, :status, :priority)
+  end
+
+  def get_task
+    @task = Task.find(params[:id])
   end
 end
