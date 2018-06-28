@@ -5,5 +5,7 @@ table
         = link_to task.title, task
       td = task.due_at
       td = task.priority
+      td
+        = link_to "編集", edit_task_path(task.id)
 div
   = link_to "タスクを追加", new_task_path
