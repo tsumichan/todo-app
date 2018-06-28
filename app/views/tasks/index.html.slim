@@ -1,7 +1,8 @@
 table
   - @tasks.each do |task|
     tr
-      td = task.title
+      td
+        = link_to task.title, task_path(task.id)
       td = task.due_at
       td = task.priority
 div
