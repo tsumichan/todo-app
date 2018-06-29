@@ -2,15 +2,17 @@
   = content_tag(:div, value, class: key)
 
 table
+  tr
+    th タスク名
+    th 期限
+    th ステータス
+    th 優先度
   - @tasks.each do |task|
     tr
-      td
-        = link_to task.title, task
+      td = link_to task.title, task
       td = task.due_at
+      td = task.status
       td = task.priority
-      td
-        = link_to "編集", edit_task_path(task.id)
-      td
-        = link_to "削除", task, method: :delete, data: {confirm: "本当に削除しますか？"}
-div
-  = link_to "タスクを追加", new_task_path
+      td = link_to "編集", edit_task_path(task.id)
+      td = link_to "削除", task, method: :delete, data: {confirm: "本当に削除しますか？"}
+div = link_to "タスクを追加", new_task_path
