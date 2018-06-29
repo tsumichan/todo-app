@@ -7,6 +7,7 @@ table
       td
         = link_to task.title, task
       td = task.due_at
+      td = task.status
       td = task.priority
       td
         = link_to "編集", edit_task_path(task.id)
