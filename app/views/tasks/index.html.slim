@@ -1,6 +1,5 @@
 - flash.each do |key, value|
-  div.key
-    = value
+  = content_tag(:div, value, class: key)
 
 table
   - @tasks.each do |task|
