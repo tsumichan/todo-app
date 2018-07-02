@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 describe 'タスク' do
-  before do
-    @task = Task.create(
-      title: 'テスト用タスク', description: 'テスト用タスクです',
-      due_at: '2020-01-01 00:00:00', status:1, priority: 1
-    )
-  end
-
   context '新規のタスクを作成する' do
     it '作成する' do
       visit 'tasks/new'
@@ -34,14 +27,16 @@ describe 'タスク' do
 
   context '既存のタスクを更新する' do
     it '変更する' do
-      visit edit_task_path(@task)
+      task = FactoryBot.create(:task)
+      visit edit_task_path(task.id)
       fill_in 'タスク名', with: '変更タスク1'
       click_button '登録'
       expect(page).to have_content '変更タスク1'
     end
 
     it '更新完了のフラッシュメッセージが表示される' do
-      visit edit_task_path(@task)
+      task = FactoryBot.create(:task)
+      visit edit_task_path(task.id)
       fill_in 'タスク名', with: '変更タスク2'
       click_button '登録'
       expect(page).to have_content 'タスクを更新しました'
@@ -50,13 +45,15 @@ describe 'タスク' do
 
   context '既存のタスクを削除する' do
     it '削除する' do
-      visit 'tasks'
+      task = FactoryBot.create(:task)
+      visit 'tasks/'
       click_link '削除'
-      expect(page).not_to have_content '削除タスク'
+      expect(page).not_to have_content 'テスト用タスク'
     end
 
     it '削除完了のフラッシュメッセージが表示される' do
-      visit 'tasks'
+      task = FactoryBot.create(:task)
+      visit 'tasks/'
       click_link '削除'
       expect(page).to have_content 'タスクを削除しました'
     end
