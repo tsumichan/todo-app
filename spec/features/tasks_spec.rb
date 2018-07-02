@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'タスク' do
   context '新規のタスクを作成する' do
     it '作成する' do
-      visit 'tasks/new'
+      visit '/tasks/new'
       fill_in 'タスク名', with: '新規タスク1'
       fill_in 'タスクの説明', with: '新規タスク1です'
       fill_in '期限', with: '2020-01-01 00:00:00'
@@ -14,7 +14,7 @@ describe 'タスク' do
     end
 
     it '作成完了のフラッシュメッセージが表示される' do
-      visit 'tasks/new'
+      visit '/tasks/new'
       fill_in 'タスク名', with: '新規タスク2'
       fill_in 'タスクの説明', with: '新規タスク2です'
       fill_in '期限', with: '2020-01-01 00:00:00'
@@ -46,14 +46,14 @@ describe 'タスク' do
   context '既存のタスクを削除する' do
     it '削除する' do
       task = FactoryBot.create(:task)
-      visit 'tasks/'
+      visit '/tasks'
       click_link '削除'
       expect(page).not_to have_content 'テスト用タスク'
     end
 
     it '削除完了のフラッシュメッセージが表示される' do
       task = FactoryBot.create(:task)
-      visit 'tasks/'
+      visit '/tasks'
       click_link '削除'
       expect(page).to have_content 'タスクを削除しました'
     end
