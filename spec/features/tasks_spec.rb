@@ -38,12 +38,27 @@ describe 'タスク' do
       fill_in 'タスク名', with: '変更タスク1'
       click_button '登録'
       expect(page).to have_content '変更タスク1'      
+      expect(page).to have_content '変更タスク1'
     end
     it '作成完了のフラッシュメッセージが表示される' do
       visit edit_task_path(@task)
       fill_in 'タスク名', with: '変更タスク2'
       click_button '登録'
       expect(page).to have_content 'タスクを更新しました'
+    end
+  end
+
+  context '既存のタスクを削除する' do
+    it '削除する' do
+      visit 'tasks'
+      click_link '削除'
+      expect(page).not_to have_content '削除タスク'
+    end
+
+    it '削除完了のフラッシュメッセージが表示される' do
+      visit 'tasks'
+      click_link '削除'
+      expect(page).to have_content 'タスクを削除しました'
     end
   end
 end
