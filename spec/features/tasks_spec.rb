@@ -17,7 +17,7 @@ describe 'タスク' do
       fill_in 'ステータス', with: '1'
       fill_in '優先度', with: '1'
       click_button '登録'
-      expect(page).to have_content '新規タスク'
+      expect(page).to have_content '新規タスク1'
     end
 
     it '作成完了のフラッシュメッセージが表示される' do
