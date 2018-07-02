@@ -9,10 +9,21 @@ describe 'タスク' do
   end
 
   context '新規のタスクを作成する' do
+    it 'タスクを作成できる' do
+      visit 'tasks/new'
+      fill_in 'タスク名', with: '新規タスク1'
+      fill_in 'タスクの説明', with: '新規タスク1です'
+      fill_in '期限', with: '2020-01-01 00:00:00'
+      fill_in 'ステータス', with: '1'
+      fill_in '優先度', with: '1'
+      click_button '登録'
+      expect(page).to have_content '新規タスク'
+    end
+
     it '作成完了のフラッシュメッセージが表示される' do
       visit 'tasks/new'
-      fill_in 'タスク名', with: '新規タスク'
-      fill_in 'タスクの説明', with: '新規タスクです'
+      fill_in 'タスク名', with: '新規タスク2'
+      fill_in 'タスクの説明', with: '新規タスク2です'
       fill_in '期限', with: '2020-01-01 00:00:00'
       fill_in 'ステータス', with: '1'
       fill_in '優先度', with: '1'
