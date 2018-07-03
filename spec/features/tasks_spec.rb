@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe 'タスク' do
-  let!(:task) { create(:task) }
-
   context '新規のタスクを作成する' do
     it '作成する' do
       visit '/tasks/new'
@@ -28,6 +26,7 @@ describe 'タスク' do
   end
 
   context '既存のタスクを更新する' do
+    let(:task) { create(:task) }
     it '変更する' do
       visit edit_task_path(task.id)
       fill_in 'タスク名', with: '変更タスク1'
@@ -44,6 +43,7 @@ describe 'タスク' do
   end
 
   context '既存のタスクを削除する' do
+    let!(:task) { create(:task) }
     it '削除する' do
       visit '/tasks'
       click_link '削除'
