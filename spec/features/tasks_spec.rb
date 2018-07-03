@@ -7,19 +7,19 @@ describe 'タスク' do
   context '新規のタスクを作成する' do
     it '作成する' do
       visit '/tasks/new'
-      fill_in 'タスク名', with: :title
+      fill_in 'タスク名', with: title
       fill_in 'タスクの説明', with: 'テスト用タスクです'
       fill_in '期限', with: '2020-01-01 00:00:00'
       fill_in 'ステータス', with: '1'
       fill_in '優先度', with: '1'
       click_button '登録'
-      expect(Task.exists?(title: :title)).to be true
-      expect(page).to have_content :title
+      expect(Task.exists?(title: title)).to be true
+      expect(page).to have_content title
     end
 
     it '作成完了のフラッシュメッセージが表示される' do
       visit '/tasks/new'
-      fill_in 'タスク名', with: :title
+      fill_in 'タスク名', with: title
       fill_in 'タスクの説明', with: 'テスト用タスクです'
       fill_in '期限', with: '2020-01-01 00:00:00'
       fill_in 'ステータス', with: '1'
@@ -33,11 +33,8 @@ describe 'タスク' do
     let(:task) { create(:task) }
     it '変更する' do
       visit edit_task_path(task.id)
-      fill_in 'タスク名', with: '変更タスク'
       fill_in 'タスク名', with: title_edited
       click_button '登録'
-      expect(Task.exists?(title: '変更タスク')).to be true
-      expect(page).to have_content '変更タスク'
       expect(Task.exists?(title: title_edited)).to be true
       expect(page).to have_content title_edited
     end
@@ -55,8 +52,8 @@ describe 'タスク' do
     it '削除する' do
       visit '/tasks'
       click_link '削除'
-      expect(Task.exists?(title: :title)).not_to be true
-      expect(page).not_to have_content :title
+      expect(Task.exists?(title: title)).not_to be true
+      expect(page).not_to have_content title
     end
 
     it '削除完了のフラッシュメッセージが表示される' do
