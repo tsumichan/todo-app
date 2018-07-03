@@ -10,6 +10,7 @@ describe 'タスク' do
       fill_in 'ステータス', with: '1'
       fill_in '優先度', with: '1'
       click_button '登録'
+      expect(Task.exists?(title: '新規タスク1')).to be true
       expect(page).to have_content '新規タスク1'
     end
 
