@@ -45,14 +45,12 @@ describe 'タスク' do
 
   context '既存のタスクを削除する' do
     it '削除する' do
-      # task = FactoryBot.create(:task)
       visit '/tasks'
       click_link '削除'
       expect(page).not_to have_content 'テスト用タスク'
     end
 
     it '削除完了のフラッシュメッセージが表示される' do
-      # task = FactoryBot.create(:task)
       visit '/tasks'
       click_link '削除'
       expect(page).to have_content 'タスクを削除しました'
