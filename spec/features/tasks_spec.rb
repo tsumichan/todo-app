@@ -48,6 +48,7 @@ describe 'タスク' do
     it '削除する' do
       visit '/tasks'
       click_link '削除'
+      expect(Task.exists?(title: 'テスト用タスク')).not_to be true
       expect(page).not_to have_content 'テスト用タスク'
     end
 
