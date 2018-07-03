@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'タスク' do
-  let!(:task) { FactoryBot.create(:task) }
+  let!(:task) { create(:task) }
 
   context '新規のタスクを作成する' do
     it '作成する' do
