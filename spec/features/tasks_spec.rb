@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'タスク' do
   let(:title) { 'テスト用タスク' }
+  let(:title_edited) { '変更用タスク' }
+
   context '新規のタスクを作成する' do
     it '作成する' do
       visit '/tasks/new'
@@ -32,9 +34,12 @@ describe 'タスク' do
     it '変更する' do
       visit edit_task_path(task.id)
       fill_in 'タスク名', with: '変更タスク'
+      fill_in 'タスク名', with: title_edited
       click_button '登録'
       expect(Task.exists?(title: '変更タスク')).to be true
       expect(page).to have_content '変更タスク'
+      expect(Task.exists?(title: title_edited)).to be true
+      expect(page).to have_content title_edited
     end
 
     it '更新完了のフラッシュメッセージが表示される' do
