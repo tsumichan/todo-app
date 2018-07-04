@@ -1,5 +1,21 @@
 ---
 en:
+  view:
+    task:
+      title:
+        new: "Create new task"
+        edit: "Edit the task"
+      message:
+        created: "Created a new task"
+        updated: "Updated a task"
+        deleted: "Deleted a task"
+        delete_confirm: "Are you sure you want to delte this task?"
+      link_text:
+        new: "New"
+        edit: "Edit"
+        delete: "Delte"
+        add: "Add a new task"
+        back: "Back"
   activerecord:
     errors:
       messages:

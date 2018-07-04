@@ -1,5 +1,20 @@
 ---
 ja:
+  view:
+    task:
+      title:
+        new: "タスクを追加する"
+        edit: "タスクを編集する"
+      message:
+        created: "タスクを追加しました"
+        updated: "タスクを更新しました"
+        deleted: "タスクを削除しました"
+        delete_confirm: "本当に削除しますか？"
+      link_text:
+        new: "タスクを追加"
+        edit: "編集"
+        delete: "削除"
+        back: "戻る"
   activerecord:
     errors:
       messages:
