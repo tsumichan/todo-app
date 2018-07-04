@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to root_path, flash: { success: "タスクを追加しました"}
+      redirect_to root_path, flash: { success: t('view.task.message.created')}
     else
       render :new
     end
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to root_path, flash: { success: "タスクを更新しました"}
+      redirect_to root_path, flash: { success: t('view.task.message.updated')}
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to root_path, flash: { success: "タスクを削除しました"}
+    redirect_to root_path, flash: { success: t('view.task.message.deleted')}
   end
 
   private
