@@ -1,18 +1,18 @@
 = form_for @task do |f|
   div
-    = f.label :title, "タスク名"
+    = f.label :title, t('view.task.label.title')
     = f.text_field :title
   div
-    = f.label :description, "タスクの説明"
+    = f.label :description, t('view.task.label.description')
     = f.text_area :description
   div
-    = f.label :due_at, "期限"
+    = f.label :due_at, t('view.task.label.due_at')
     = f.text_field :due_at
   div
-    = f.label :status, "ステータス"
+    = f.label :status, t('view.task.label.status')
     = f.text_field :status
   div
-    = f.label :priority, "優先度"
+    = f.label :priority, t('view.task.label.priority')
     = f.text_field :priority
   div
-    = f.submit "登録"
+    = f.submit

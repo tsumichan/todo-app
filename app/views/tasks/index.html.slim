@@ -3,10 +3,10 @@
 
 table
   tr
-    th タスク名
-    th 期限
-    th ステータス
-    th 優先度
+    th = t('view.task.label.title')
+    th = t('view.task.label.due_at')
+    th = t('view.task.label.status')
+    th = t('view.task.label.priority')
   - @tasks.each do |task|
     tr
       td = link_to task.title, task
