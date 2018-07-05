@@ -8,6 +8,8 @@ ja:
         due_at: "期限"
         status: "ステータス"
         priority: "優先度"
+      button:
+        submit: "登録"
       title:
         new: "タスクを追加する"
         edit: "タスクを編集する"
