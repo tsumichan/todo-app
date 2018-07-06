@@ -2,6 +2,14 @@
 en:
   view:
     task:
+      label:
+        title: "Title"
+        description: "Description"
+        due_at: "Due at"
+        status: "Status"
+        priority: "Priority"
+      button:
+        submit: "Submit"
       title:
         new: "Create new task"
         edit: "Edit the task"
