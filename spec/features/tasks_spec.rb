@@ -62,4 +62,15 @@ describe 'タスク' do
       expect(page).to have_content I18n.t('view.task.message.deleted')
     end
   end
+
+  context 'タスクが作成日時の降順で表示される' do
+    let! (:new_task) { create(:task, created_at: '2020-01-01') }
+    let! (:old_task) { create(:task, created_at: '2000-01-01') }
+
+    it 'タスクを降順でソートする' do
+      visit tasks_path
+      page.all('tr')[1].has_link?('編集', href: '/tasks/#{new_task.id}/edit')
+      page.all('tr')[2].has_link?('編集', href: '/tasks/#{old_task.id}/edit')
+    end
+  end
 end
