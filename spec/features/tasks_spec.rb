@@ -69,8 +69,9 @@ describe 'タスク' do
 
     it 'タスクを降順でソートする' do
       visit tasks_path
-      page.all('tr')[1].has_link?('編集', href: '/tasks/#{new_task.id}/edit')
-      page.all('tr')[2].has_link?('編集', href: '/tasks/#{old_task.id}/edit')
+      expect(page.all('tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
+      expect(page.all('tr')[2]).to have_link('編集', href: edit_task_path(old_task.id))
+
     end
   end
 end
