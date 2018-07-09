@@ -6,7 +6,7 @@ describe 'タスク' do
 
   context '新規のタスクを作成する' do
     it '作成する' do
-      visit '/tasks/new'
+      visit new_task_path
       fill_in I18n.t('view.task.label.title'), with: title
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
@@ -18,7 +18,7 @@ describe 'タスク' do
     end
 
     it '作成完了のフラッシュメッセージが表示される' do
-      visit '/tasks/new'
+      visit new_task_path
       fill_in I18n.t('view.task.label.title'), with: title
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
@@ -50,14 +50,14 @@ describe 'タスク' do
   context '既存のタスクを削除する' do
     let!(:task) { create(:task) }
     it '削除する' do
-      visit '/tasks'
+      visit tasks_path
       click_link I18n.t('view.task.link_text.delete')
       expect(Task.exists?(title: title)).not_to be true
       expect(page).not_to have_content title
     end
 
     it '削除完了のフラッシュメッセージが表示される' do
-      visit '/tasks'
+      visit tasks_path
       click_link I18n.t('view.task.link_text.delete')
       expect(page).to have_content I18n.t('view.task.message.deleted')
     end
