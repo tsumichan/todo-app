@@ -1,3 +1,9 @@
+- if @task.errors.any?
+  div
+    ul
+      - @task.errors.full_messages.each do |message|
+        li = message
+
 = form_for @task do |f|
   div
     = f.label :title, t('view.task.label.title')
