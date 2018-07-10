@@ -26,5 +26,18 @@ describe 'タスク' do
       task.valid?
       expect(task.errors.details[:title].any? { |e| e[:error] == :too_long }).to be true
     end
+
+    it 'タスクの説明文が255文字以内なら保存ができること' do
+      task = build(:task)
+      task.description = 'a' * 255
+      expect(task).to be_valid
+    end
+
+    it 'タスクの説明文が256文字以上なら保存ができないこと' do
+      task = build(:task)
+      task.description = 'a' * 256
+      task.valid?
+      expect(task.errors.details[:description].any? { |e| e[:error] == :too_long }).to be true
+    end
   end
 end
