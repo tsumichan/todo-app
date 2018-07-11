@@ -4,3 +4,6 @@
 
 ## このリポジトリについて
 https://github.com/everyleaf/el-training をやっています
+
+## デプロイ方法
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
