@@ -1,7 +1,7 @@
 {
   "name": "todo-app",
   "description": "by el-training",
-  "repository": "https://github.com/heroku/button-sample",
+  "repository": "https://github.com/tsumichan/todo-app",
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["todo-app", "rails", "el-training"]
 }
