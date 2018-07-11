@@ -11,3 +11,10 @@ https://github.com/everyleaf/el-training をやっています
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 3. 初回のみ`heroku run rails db:migrate`を実行
 4. `heroku open`でアクセスできます
+
+## バージョン情報
+```
+Ruby v2.5.1
+Rails v5.2.0
+PostgreSQL v10.4
+```
