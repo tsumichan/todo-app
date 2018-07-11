@@ -6,4 +6,8 @@
 https://github.com/everyleaf/el-training をやっています
 
 ## デプロイ方法
+1. [Heroku](https://heroku.com/)のアカウントを取得
+2. 以下からデプロイできます↓  
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+3. 初回のみ`heroku run rails db:migrate`を実行
+4. `heroku open`でアクセスできます
