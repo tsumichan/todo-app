@@ -23,6 +23,8 @@ ja:
         edit: "編集"
         delete: "削除"
         back: "戻る"
+        sort_by_due_at: "終了期限が近い順でソートする"
+        sort_by_created_at: "作成日時が近い順でソートする"
   activerecord:
     errors:
       messages:

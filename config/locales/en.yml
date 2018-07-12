@@ -24,6 +24,8 @@ en:
         delete: "Delte"
         add: "Add a new task"
         back: "Back"
+        sort_by_due_at: "Sort by due at"
+        sort_by_created_at: "Sort by created at"
   activerecord:
     errors:
       messages:
