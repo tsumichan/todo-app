@@ -64,8 +64,8 @@ describe 'タスク' do
   end
 
   context 'タスクを作成日時の降順で表示する' do
-    let! (:new_task) { create(:task, created_at: '2020-01-01') }
-    let! (:old_task) { create(:task, created_at: '2000-01-01') }
+    let! (:new_task) { create(:new_task) }
+    let! (:old_task) { create(:old_task) }
     it 'タスクを降順でソートする' do
       visit tasks_path
       expect(page.all('tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
@@ -74,8 +74,8 @@ describe 'タスク' do
   end
 
   context 'タスクを終了期限の近い順で表示する' do
-    let! (:new_task) { create(:task, due_at: '2020-01-01') }
-    let! (:old_task) { create(:task, due_at: '2000-01-01') }
+    let! (:new_task) { create(:new_task, due_at: '2020-01-01') }
+    let! (:old_task) { create(:old_task, due_at: '2000-01-01') }
     it '終了期限順でソートする' do
       visit tasks_path
       click_link I18n.t('view.task.link_text.sort_by_due_at')
