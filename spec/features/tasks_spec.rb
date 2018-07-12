@@ -83,4 +83,17 @@ describe 'タスク' do
       expect(page.all('tr')[2]).to have_link('編集', href: edit_task_path(new_task.id))
     end
   end
+
+  context 'タスクを作成日時が新しい順でソートする' do
+    it '作成日時順でソートするリンクがある' do
+      visit tasks_path
+      expect(page).to have_content I18n.t('view.task.link_text.sort_by_created_at')
+    end
+
+    it 'リンクにパラメータがついていない' do
+      visit tasks_path
+      click_link I18n.t('view.task.link_text.sort_by_created_at')
+      expect(current_path).to eq ('/tasks')
+    end
+  end
 end
