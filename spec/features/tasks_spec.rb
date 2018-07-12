@@ -17,7 +17,7 @@ describe 'タスク' do
       expect(page).to have_content title
     end
 
-    it '作成完了のフラッシュメッセージが表示される' do
+    it '作成完了のフラッシュメッセージを表示する' do
       visit new_task_path
       fill_in I18n.t('view.task.label.title'), with: title
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
@@ -39,7 +39,7 @@ describe 'タスク' do
       expect(page).to have_content title_edited
     end
 
-    it '更新完了のフラッシュメッセージが表示される' do
+    it '更新完了のフラッシュメッセージを表示する' do
       visit edit_task_path(task.id)
       fill_in I18n.t('view.task.label.title'), with: '変更タスク'
       click_button I18n.t('view.task.button.submit')
@@ -56,20 +56,31 @@ describe 'タスク' do
       expect(page).not_to have_content title
     end
 
-    it '削除完了のフラッシュメッセージが表示される' do
+    it '削除完了のフラッシュメッセージを表示する' do
       visit tasks_path
       click_link I18n.t('view.task.link_text.delete')
       expect(page).to have_content I18n.t('view.task.message.deleted')
     end
   end
 
-  context 'タスクが作成日時の降順で表示される' do
+  context 'タスクを作成日時の降順で表示する' do
     let! (:new_task) { create(:task, created_at: '2020-01-01') }
     let! (:old_task) { create(:task, created_at: '2000-01-01') }
     it 'タスクを降順でソートする' do
       visit tasks_path
       expect(page.all('tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
       expect(page.all('tr')[2]).to have_link('編集', href: edit_task_path(old_task.id))
+    end
+  end
+
+  context 'タスクを終了期限の近い順で表示する' do
+    let! (:new_task) { create(:task, due_at: '2020-01-01') }
+    let! (:old_task) { create(:task, due_at: '2000-01-01') }
+    it '終了期限順でソートする' do
+      visit tasks_path
+      click_link I18n.t('view.task.link_text.sort_by_due_at')
+      expect(page.all('tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
+      expect(page.all('tr')[2]).to have_link('編集', href: edit_task_path(new_task.id))
     end
   end
 end
