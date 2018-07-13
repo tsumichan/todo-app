@@ -5,8 +5,8 @@ class TasksController < ApplicationController
     @tasks = if params[:sort_by] == 'due_at'
                Task.order(due_at: :asc)
              elsif params[:search].present?
-               search = params[:search]
-               Task.where('title LIKE ?', "%#{search}%")
+               word = params[:search]
+               Task.search(word)
              else
                Task.order(created_at: :desc)
              end
