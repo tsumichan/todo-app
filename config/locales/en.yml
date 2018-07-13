@@ -10,6 +10,7 @@ en:
         priority: "Priority"
       button:
         submit: "Submit"
+        search: "Search"
       title:
         new: "Create new task"
         edit: "Edit the task"

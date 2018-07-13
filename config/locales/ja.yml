@@ -10,6 +10,7 @@ ja:
         priority: "優先度"
       button:
         submit: "登録"
+        search: "検索"
       title:
         new: "タスクを追加する"
         edit: "タスクを編集する"

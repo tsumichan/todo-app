@@ -4,6 +4,9 @@ class TasksController < ApplicationController
   def index
     @tasks = if params[:sort_by] == 'due_at'
                Task.order(due_at: :asc)
+             elsif params[:search].present?
+               search = params[:search]
+               Task.where('title LIKE ?', "%#{search}%")
              else
                Task.order(created_at: :desc)
              end
