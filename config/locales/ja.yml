@@ -19,6 +19,7 @@ ja:
         updated: "タスクを更新しました"
         deleted: "タスクを削除しました"
         delete_confirm: "本当に削除しますか？"
+        no_match_task: "該当するタスクはありません"
       link_text:
         new: "タスクを追加"
         edit: "編集"

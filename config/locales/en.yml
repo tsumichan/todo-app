@@ -19,6 +19,7 @@ en:
         updated: "Updated a task"
         deleted: "Deleted a task"
         delete_confirm: "Are you sure you want to delte this task?"
+        no_match_task: "There is no matching task"
       link_text:
         new: "New"
         edit: "Edit"

@@ -22,7 +22,7 @@ table
         td = link_to t('view.task.link_text.edit'), edit_task_path(task.id)
         td = link_to t('view.task.link_text.delete'), task, method: :delete, data: {confirm: t('view.task.message.delete_confirm')}
   - else
-    div 該当するタスクはありません
+    div = t('view.task.message.no_match_task')
 div = link_to t('view.task.link_text.new'), new_task_path
 div = link_to t('view.task.link_text.sort_by_due_at'), tasks_path(sort_by: 'due_at')
 div = link_to t('view.task.link_text.sort_by_created_at'), tasks_path
