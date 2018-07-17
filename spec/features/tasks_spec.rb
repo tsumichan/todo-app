@@ -96,4 +96,21 @@ describe 'タスク' do
       expect(current_path).to eq ('/tasks')
     end
   end
+
+  context 'タスクをタイトルで検索する' do
+    let!(:task) { create(:task) }
+    it '入力された文字列で検索をする' do
+      visit tasks_path
+      fill_in :search, with: 'テスト'
+      click_button I18n.t('view.task.button.search')
+      expect(page).to have_content 'テスト'
+    end
+
+    it 'マッチするものがない場合、マッチするものがなかったことを知らせる' do
+      visit tasks_path
+      fill_in :search, with: 'サンプル'
+      click_button I18n.t('view.task.button.search')
+      expect(page).to have_content I18n.t('view.task.message.no_match_task')
+    end
+  end
 end
