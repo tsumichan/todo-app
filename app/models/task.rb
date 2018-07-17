@@ -5,4 +5,8 @@ class Task < ApplicationRecord
   def self.search(key)
     self.where('title LIKE ?', "%#{key}%")
   end
+
+  def self.search_status(key)
+    self.where(status: key)
+  end
 end

@@ -7,6 +7,9 @@ class TasksController < ApplicationController
              elsif params[:search].present?
                word = params[:search]
                Task.search(word)
+             elsif params[:status].present?
+               status = params[:status]
+               Task.search_status(status)
              else
                Task.order(created_at: :desc)
              end
