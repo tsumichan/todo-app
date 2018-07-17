@@ -26,7 +26,7 @@ table
 div = link_to t('view.task.link_text.new'), new_task_path
 div = link_to t('view.task.link_text.sort_by_due_at'), tasks_path(sort_by: 'due_at')
 div = link_to t('view.task.link_text.sort_by_created_at'), tasks_path
-div = link_to '「未着手」で検索', tasks_path(status: 0)
-div = link_to '「着手」で検索', tasks_path(status: 1)
-div = link_to '「完了」で検索', tasks_path(status: 2)
+div = link_to t('view.task.link_text.search_by_waiting_task'), tasks_path(status: 0)
+div = link_to t('view.task.link_text.search_by_working_task'), tasks_path(status: 1)
+div = link_to t('view.task.link_text.search_by_completed_task'), tasks_path(status: 2)
 div = link_to '検索条件をクリア', tasks_path

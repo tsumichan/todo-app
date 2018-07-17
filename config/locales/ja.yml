@@ -26,6 +26,9 @@ ja:
         back: "戻る"
         sort_by_due_at: "終了期限が近い順でソートする"
         sort_by_created_at: "作成日時が新しい順でソートする"
+        search_by_waiting_task: "「未着手」で検索"
+        search_by_working_task: "「着手」で検索"
+        search_by_completed_task: "「完了」で検索"
   activerecord:
     errors:
       messages:

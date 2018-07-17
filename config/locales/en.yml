@@ -27,6 +27,9 @@ en:
         back: "Back"
         sort_by_due_at: "Sort by due at"
         sort_by_created_at: "Sort by created at"
+        search_by_waiting_task: "Search by waiting task"
+        search_by_working_task: "Search by working task"
+        search_by_completed_task: "Search by completed task"
   activerecord:
     errors:
       messages:
