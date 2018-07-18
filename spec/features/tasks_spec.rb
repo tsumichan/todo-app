@@ -68,8 +68,8 @@ describe 'タスク' do
     let! (:old_task) { create(:old_task) }
     it 'タスクを降順でソートする' do
       visit tasks_path
-      expect(page.all('tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
-      expect(page.all('tr')[2]).to have_link('編集', href: edit_task_path(old_task.id))
+      expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
+      expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
     end
   end
 
@@ -79,8 +79,8 @@ describe 'タスク' do
     it '終了期限順でソートする' do
       visit tasks_path
       click_link I18n.t('view.task.link_text.sort_by_due_at')
-      expect(page.all('tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
-      expect(page.all('tr')[2]).to have_link('編集', href: edit_task_path(new_task.id))
+      expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(old_task.id))
+      expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
     end
   end
 
@@ -123,6 +123,7 @@ describe 'タスク' do
       binding.pry
       searched_task = Task.search('タスク').search_status('working')
       expect(page.all('tr').count).to eq searched_task.count + 1
+      expect(page.all('tbody tr').count).to eq searched_task.count
     end
   end
 end
