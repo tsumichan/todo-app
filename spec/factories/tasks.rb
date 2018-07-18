@@ -17,6 +17,10 @@ FactoryBot.define do
     factory :working_task do
       status 'working'
     end
+
+    factory :sample_title_task do
+      title 'サンプル用タスクです'
+    end
   end
 
 end

@@ -38,4 +38,23 @@ describe 'Task' do
       expect(task.errors.details[:description].any? { |e| e[:error] == :too_long }).to be true
     end
   end
+
+  describe '#search' do
+    let!(:task) { create(:task) }
+    context 'タイトルで検索する' do
+      let!(:sample_title_task) { create(:sample_title_task) }
+      it '入力した文字列を含むタイトルを持つタスクを返す' do
+        expect(Task.search('テスト')).to include(task)
+        expect(Task.search('テスト')).not_to include(sample_title_task)
+      end
+    end
+
+    context 'ステータスで検索する' do
+      let!(:working_task) { create(:working_task) }
+      it '指定されたステータスのタスクを返す' do
+        expect(Task.search_status('working')).to include(working_task)
+        expect(Task.search_status('working')).not_to include(task)
+      end
+    end
+  end
 end
