@@ -1,5 +1,11 @@
 ---
 en:
+  enums:
+    task:
+      status:
+        waiting: "Waiting"
+        working: "Working"
+        completed: "Completed"
   view:
     task:
       label:
