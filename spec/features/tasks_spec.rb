@@ -113,4 +113,16 @@ describe 'タスク' do
       expect(page).to have_content I18n.t('view.task.message.no_match_task')
     end
   end
+
+  context 'タスクをステータスで検索する' do
+    let!(:working_task) { create_list(:working_task, 3)}
+    it 'ステータスで検索' do
+      visit tasks_path
+      select 'working', from: 'status'
+      click_button I18n.t('view.task.button.search')
+      binding.pry
+      searched_task = Task.search('タスク').search_status('working')
+      expect(page.all('tr').count).to eq searched_task.count + 1
+    end
+  end
 end

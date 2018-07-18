@@ -13,6 +13,10 @@ FactoryBot.define do
     factory :old_task do
       created_at Date.parse('2000-01-01')
     end
+
+    factory :working_task do
+      status 'working'
+    end
   end
 
 end
