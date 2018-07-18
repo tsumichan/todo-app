@@ -5,7 +5,6 @@ describe 'タスク' do
   let(:title_edited) { '変更用タスク' }
   let(:test_title) { 'テスト' }
 
-
   context '新規のタスクを作成する' do
     it '作成する' do
       visit new_task_path
