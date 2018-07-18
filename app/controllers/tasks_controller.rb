@@ -5,12 +5,10 @@ class TasksController < ApplicationController
     @statuses = Task.statuses
     @tasks = if params[:sort_by] == 'due_at'
                Task.order(due_at: :asc)
-             elsif params[:search].present?
+             elsif params[:search].present? || params[:status].present?
                word = params[:search]
-               Task.search(word)
-             elsif params[:status].present?
                status = params[:status]
-               Task.search_status(status)
+               Task.search(word).search_status(status)
              else
                Task.order(created_at: :desc)
              end
