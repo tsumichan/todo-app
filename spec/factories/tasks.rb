@@ -3,7 +3,7 @@ FactoryBot.define do
     title 'テスト用タスク'
     description 'テスト用タスクです'
     due_at Date.parse('2020-01-01')
-    status '1'
+    status 'waiting'
     priority '1'
 
     factory :new_task do

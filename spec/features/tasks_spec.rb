@@ -10,7 +10,7 @@ describe 'タスク' do
       fill_in I18n.t('view.task.label.title'), with: title
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('view.task.label.status'), with: '1'
+      fill_in I18n.t('view.task.label.status'), with: 'waiting'
       fill_in I18n.t('view.task.label.priority'), with: '1'
       click_button I18n.t('view.task.button.submit')
       expect(Task.exists?(title: title)).to be true
@@ -22,7 +22,7 @@ describe 'タスク' do
       fill_in I18n.t('view.task.label.title'), with: title
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('view.task.label.status'), with: '1'
+      fill_in I18n.t('view.task.label.status'), with: 'waiting'
       fill_in I18n.t('view.task.label.priority'), with: '1'
       click_button I18n.t('view.task.button.submit')
       expect(page).to have_content I18n.t('view.task.message.created')
