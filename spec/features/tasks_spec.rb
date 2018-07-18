@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'タスク' do
   let(:title) { 'テスト用タスク' }
   let(:title_edited) { '変更用タスク' }
+  let(:test_title) { 'テスト' }
+
 
   context '新規のタスクを作成する' do
     it '作成する' do
@@ -97,13 +99,14 @@ describe 'タスク' do
     end
   end
 
-  context 'タスクをタイトルで検索する' do
+  context 'タスクを検索する' do
     let!(:task) { create(:task) }
+    let!(:working_task) { create_list(:working_task, 3)}
     it '入力された文字列で検索をする' do
       visit tasks_path
-      fill_in :search, with: 'テスト'
+      fill_in :search, with: test_title
       click_button I18n.t('view.task.button.search')
-      expect(page).to have_content 'テスト'
+      expect(page).to have_content test_title
     end
 
     it 'マッチするものがない場合、マッチするものがなかったことを知らせる' do
@@ -112,17 +115,21 @@ describe 'タスク' do
       click_button I18n.t('view.task.button.search')
       expect(page).to have_content I18n.t('view.task.message.no_match_task')
     end
-  end
 
-  context 'タスクをステータスで検索する' do
-    let!(:working_task) { create_list(:working_task, 3)}
-    it 'ステータスで検索' do
+    it 'ステータスで検索する' do
       visit tasks_path
       select 'working', from: 'status'
       click_button I18n.t('view.task.button.search')
-      binding.pry
-      searched_task = Task.search('タスク').search_status('working')
-      expect(page.all('tr').count).to eq searched_task.count + 1
+      searched_task = Task.search_status('working')
+      expect(page.all('tbody tr').count).to eq searched_task.count
+    end
+
+    it 'タイトルとステータスで検索する' do
+      visit tasks_path
+      fill_in 'search', with: test_title
+      select 'working', from: 'status'
+      click_button I18n.t('view.task.button.search')
+      searched_task = Task.search(test_title).search_status('working')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end
   end
