@@ -11,7 +11,7 @@ describe 'タスク' do
       fill_in I18n.t('view.task.label.title'), with: title
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('view.task.label.status'), with: 'Todo'
+      fill_in I18n.t('view.task.label.status'), with: 'todo'
       fill_in I18n.t('view.task.label.priority'), with: '1'
       click_button I18n.t('view.task.button.submit')
       expect(Task.exists?(title: title)).to be true
@@ -23,7 +23,7 @@ describe 'タスク' do
       fill_in I18n.t('view.task.label.title'), with: title
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('view.task.label.status'), with: 'Todo'
+      fill_in I18n.t('view.task.label.status'), with: 'todo'
       fill_in I18n.t('view.task.label.priority'), with: '1'
       click_button I18n.t('view.task.button.submit')
       expect(page).to have_content I18n.t('view.task.message.created')
@@ -117,18 +117,18 @@ describe 'タスク' do
 
     it 'ステータスで検索する' do
       visit tasks_path
-      select 'doing', from: 'status'
+      select I18n.t('enums.task.status.doing'), from: 'status'
       click_button I18n.t('view.task.button.search')
-      searched_task = Task.search_status('Doing')
+      searched_task = Task.search_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end
 
     it 'タイトルとステータスで検索する' do
       visit tasks_path
       fill_in 'search', with: test_title
-      select 'doing', from: 'status'
+      select I18n.t('enums.task.status.doing'), from: 'status'
       click_button I18n.t('view.task.button.search')
-      searched_task = Task.search(test_title).search_status('Doing')
+      searched_task = Task.search(test_title).search_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end
   end
