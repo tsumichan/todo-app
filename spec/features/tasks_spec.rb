@@ -117,7 +117,7 @@ describe 'タスク' do
 
     it 'ステータスで検索する' do
       visit tasks_path
-      select 'Doing', from: 'status'
+      select 'doing', from: 'status'
       click_button I18n.t('view.task.button.search')
       searched_task = Task.search_status('Doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
@@ -126,7 +126,7 @@ describe 'タスク' do
     it 'タイトルとステータスで検索する' do
       visit tasks_path
       fill_in 'search', with: test_title
-      select 'Doing', from: 'status'
+      select 'doing', from: 'status'
       click_button I18n.t('view.task.button.search')
       searched_task = Task.search(test_title).search_status('Doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
