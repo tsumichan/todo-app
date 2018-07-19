@@ -3,7 +3,7 @@ FactoryBot.define do
     title 'テスト用タスク'
     description 'テスト用タスクです'
     due_at Date.parse('2020-01-01')
-    status 'waiting'
+    status 'Todo'
     priority '1'
 
     factory :new_task do
@@ -14,8 +14,8 @@ FactoryBot.define do
       created_at Date.parse('2000-01-01')
     end
 
-    factory :working_task do
-      status 'working'
+    factory :doing_task do
+      status 'Doing'
     end
 
     factory :sample_title_task do
