@@ -52,8 +52,8 @@ describe 'Task' do
     context 'ステータスで検索する' do
       let!(:doing_task) { create(:doing_task) }
       it '指定されたステータスのタスクを返す' do
-        expect(Task.search_status('Doing')).to include(doing_task)
-        expect(Task.search_status('Doing')).not_to include(task)
+        expect(Task.search_status('doing')).to include(doing_task)
+        expect(Task.search_status('doing')).not_to include(task)
       end
     end
   end
