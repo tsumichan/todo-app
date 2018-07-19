@@ -3,9 +3,9 @@ ja:
   enums:
     task:
       status:
-        Todo: "未着手"
-        Doing: "着手中"
-        Done: "完了"
+        todo: "未着手"
+        doing: "着手中"
+        done: "完了"
   view:
     task:
       label:

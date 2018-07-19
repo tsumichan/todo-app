@@ -3,9 +3,9 @@ en:
   enums:
     task:
       status:
-        Todo: "Todo"
-        Doing: "Doing"
-        Done: "Done"
+        todo: "Todo"
+        doing: "Doing"
+        done: "Done"
   view:
     task:
       label:
