@@ -3,9 +3,9 @@ en:
   enums:
     task:
       status:
-        waiting: "Waiting"
-        working: "Working"
-        completed: "Completed"
+        Todo: "Todo"
+        Doing: "Doing"
+        Done: "Done"
   view:
     task:
       label:
