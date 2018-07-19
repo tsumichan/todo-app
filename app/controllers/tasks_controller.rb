@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @statuses = Task.statuses
+    @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
     @tasks = if params[:sort_by] == 'due_at'
                Task.order(due_at: :asc)
              elsif params[:search].present? || params[:status].present?
