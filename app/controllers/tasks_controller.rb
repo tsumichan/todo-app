@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     sort = params[:sort]
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
     @sorts = Task.sorts.map { |k, v| [t("enums.task.sort.#{k}"), v]}
-    @tasks = Task.search(word).search_status(status).sort_by_due_at(sort)
+    @tasks = Task.search_by_title(word).search_by_status(status).sort_by_due_at(sort)
   end
   def new
     @task = Task.new
