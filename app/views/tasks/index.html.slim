@@ -25,7 +25,6 @@ table
             td = task.priority
             td = link_to t('view.task.link_text.edit'), edit_task_path(task.id)
             td = link_to t('view.task.link_text.delete'), task, method: :delete, data: {confirm: t('view.task.message.delete_confirm')}
-            td = task.created_at
     - else
       div = t('view.task.message.no_match_task')
 div = link_to t('view.task.link_text.new'), new_task_path
