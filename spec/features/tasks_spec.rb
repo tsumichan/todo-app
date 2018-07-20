@@ -74,27 +74,23 @@ describe 'タスク' do
     end
   end
 
-  context 'タスクを終了期限の近い順で表示する' do
+  context 'タスクをソートする' do
     let! (:new_task) { create(:new_task, due_at: '2020-01-01') }
     let! (:old_task) { create(:old_task, due_at: '2000-01-01') }
-    it '終了期限順でソートする' do
+    it '終了期限が近い順でソートする' do
       visit tasks_path
-      click_link I18n.t('view.task.link_text.sort_by_due_at')
+      select I18n.t('enums.task.sort.due_at'), from: 'sort'
+      click_button I18n.t('view.task.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(old_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
     end
-  end
 
-  context 'タスクを作成日時が新しい順でソートする' do
-    it '作成日時順でソートするリンクがある' do
+    it '作成日時が新しい順でソートする' do
       visit tasks_path
-      expect(page).to have_content I18n.t('view.task.link_text.sort_by_created_at')
-    end
-
-    it 'リンクにパラメータがついていない' do
-      visit tasks_path
-      click_link I18n.t('view.task.link_text.sort_by_created_at')
-      expect(current_path).to eq ('/tasks')
+      select I18n.t('enums.task.sort.created_at'), from: 'sort'
+      click_button I18n.t('view.task.button.search')
+      expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
+      expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
     end
   end
 
