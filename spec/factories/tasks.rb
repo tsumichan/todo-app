@@ -13,14 +13,5 @@ FactoryBot.define do
     factory :old_task do
       created_at Date.parse('2000-01-01')
     end
-
-    factory :doing_task do
-      status 'doing'
-    end
-
-    factory :sample_title_task do
-      title 'サンプル用タスクです'
-    end
   end
-
 end
