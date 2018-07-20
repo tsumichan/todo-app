@@ -2,18 +2,13 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
+    word = params[:search]
+    status = params[:status]
+    sort = params[:sort]
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
-    @tasks = if params[:sort_by] == 'due_at'
-               Task.order(due_at: :asc)
-             elsif params[:search].present? || params[:status].present?
-               word = params[:search]
-               status = params[:status]
-               Task.search(word).search_status(status)
-             else
-               Task.order(created_at: :desc)
-             end
+    @sorts = Task.sorts.map { |k, v| [t("enums.task.sort.#{k}"), v]}
+    @tasks = Task.search(word).search_status(status).sort_by_due_at(sort)
   end
-
   def new
     @task = Task.new
   end
