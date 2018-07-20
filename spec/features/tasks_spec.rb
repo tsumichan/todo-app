@@ -96,7 +96,6 @@ describe 'タスク' do
 
   context 'タスクを検索する' do
     let!(:task) { create(:task) }
-    let!(:doing_task) { create_list(:doing_task, 3)}
     it '入力された文字列で検索をする' do
       visit tasks_path
       fill_in :search, with: test_title
@@ -115,7 +114,7 @@ describe 'タスク' do
       visit tasks_path
       select I18n.t('enums.task.status.doing'), from: 'status'
       click_button I18n.t('view.task.button.search')
-      searched_task = Task.search_status('doing')
+      searched_task = Task.search_by_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end
 
@@ -124,7 +123,7 @@ describe 'タスク' do
       fill_in 'search', with: test_title
       select I18n.t('enums.task.status.doing'), from: 'status'
       click_button I18n.t('view.task.button.search')
-      searched_task = Task.search(test_title).search_status('doing')
+      searched_task = Task.search_by_title(test_title).search_by_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end
   end
