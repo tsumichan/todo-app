@@ -6,5 +6,12 @@ class Task < ApplicationRecord
   scope :search_by_title, ->(word) { where('title LIKE ?', "%#{word}%") if word.present? }
   scope :search_by_status, ->(status) { where(status: status) if status.present? }
   scope :sort_by_due_at, ->(sort) {
-    sort == '1' ? order(due_at: :asc) : order(created_at: :desc) }
+    option = case sort.to_i
+         when 1
+           { due_at: :asc }
+         else
+           { created_at: :desc }
+         end
+    order(option)
+  }
 end
