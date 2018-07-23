@@ -79,7 +79,7 @@ describe 'タスク' do
     let! (:old_task) { create(:old_task, due_at: '2000-01-01') }
     it '終了期限が近い順でソートする' do
       visit tasks_path
-      select I18n.t('enums.task.sort.due_at'), from: 'sort'
+      select I18n.t('view.task.sort.due_at'), from: 'sort'
       click_button I18n.t('view.task.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(old_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
@@ -87,7 +87,7 @@ describe 'タスク' do
 
     it '作成日時が新しい順でソートする' do
       visit tasks_path
-      select I18n.t('enums.task.sort.created_at'), from: 'sort'
+      select I18n.t('view.task.sort.created_at'), from: 'sort'
       click_button I18n.t('view.task.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
