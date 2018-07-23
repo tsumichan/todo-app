@@ -2,12 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    word = params[:search]
-    status = params[:status]
-    sort = params[:sort]
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
     @sorts = Task.sorts.map { |k, v| [t("enums.task.sort.#{k}"), v]}
-    @tasks = Task.search_by_title(word).search_by_status(status).sort_by_due_at(sort)
+    @tasks = Task.search_by_title(params[:search]).search_by_status(params[:status]).sort_by_due_at(params[:sort])
   end
   def new
     @task = Task.new
