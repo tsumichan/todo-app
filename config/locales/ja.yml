@@ -1,5 +1,11 @@
 ---
 ja:
+  enums:
+    task:
+      status:
+        todo: "未着手"
+        doing: "着手中"
+        done: "完了"
   view:
     task:
       label:
@@ -10,6 +16,7 @@ ja:
         priority: "優先度"
       button:
         submit: "登録"
+        search: "検索"
       title:
         new: "タスクを追加する"
         edit: "タスクを編集する"
@@ -18,13 +25,15 @@ ja:
         updated: "タスクを更新しました"
         deleted: "タスクを削除しました"
         delete_confirm: "本当に削除しますか？"
+        no_match_task: "該当するタスクはありません"
       link_text:
         new: "タスクを追加"
         edit: "編集"
         delete: "削除"
         back: "戻る"
-        sort_by_due_at: "終了期限が近い順でソートする"
-        sort_by_created_at: "作成日時が新しい順でソートする"
+      sort:
+        due_at: "終了期限が近い順でソートする"
+        created_at: "作成日時が新しい順でソートする"
   activerecord:
     errors:
       messages:
