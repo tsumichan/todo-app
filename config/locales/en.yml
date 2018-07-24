@@ -6,9 +6,6 @@ en:
         todo: "Todo"
         doing: "Doing"
         done: "Done"
-      sort:
-        due_at: "Sort by due at"
-        created_at: "Sort by created at"
   view:
     task:
       label:
@@ -35,6 +32,9 @@ en:
         delete: "Delte"
         add: "Add a new task"
         back: "Back"
+      sort:
+        due_at: "Sort by due at"
+        created_at: "Sort by created at"
   activerecord:
     errors:
       messages:
