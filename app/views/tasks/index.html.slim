@@ -5,6 +5,7 @@
   div
     = text_field_tag :search, params[:search]
     = select_tag :status, options_for_select(@statuses), include_blank: true
+    = select_tag :priority, options_for_select(@priorities), include_blank: true
     = select_tag :sort, options_for_select(@sorts)
     = submit_tag t('view.task.button.search')
 
@@ -22,7 +23,7 @@ table
             td = link_to task.title, task
             td = task.due_at
             td = task.status_i18n
-            td = task.priority
+            td = task.priority_i18n
             td = link_to t('view.task.link_text.edit'), edit_task_path(task.id)
             td = link_to t('view.task.link_text.delete'), task, method: :delete, data: {confirm: t('view.task.message.delete_confirm')}
     - else

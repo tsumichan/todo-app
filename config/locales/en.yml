@@ -6,6 +6,11 @@ en:
         todo: "Todo"
         doing: "Doing"
         done: "Done"
+      priority:
+        nothing: ""
+        low: "★"
+        middle: "★★"
+        high: "★★★"
   view:
     task:
       label:
@@ -34,6 +39,8 @@ en:
       sort:
         due_at: "Sort by due at"
         created_at: "Sort by created at"
+        priority_desc: "Sort in descending order of high priority"
+        priority_asc: "Sort in descending order of low priority"
   activerecord:
     errors:
       messages:

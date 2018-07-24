@@ -3,8 +3,9 @@ class TasksController < ApplicationController
 
   def index
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
+    @priorities = [t("view.task.sort.priority_desc"), 0], [t("view.task.sort.priority_asc"), 1]
     @sorts = [t("view.task.sort.created_at"), 0], [t("view.task.sort.due_at"), 1]
-    @tasks = Task.search_by_title(params[:search]).search_by_status(params[:status]).sort_by_due_at(params[:sort])
+    @tasks = Task.search_by_title(params[:search]).search_by_status(params[:status]).sort_by_priority(params[:priority]).sort_by_due_at(params[:sort])
   end
   def new
     @task = Task.new
