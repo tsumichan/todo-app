@@ -12,7 +12,7 @@ describe 'タスク' do
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
       fill_in I18n.t('view.task.label.status'), with: 'todo'
-      fill_in I18n.t('view.task.label.priority'), with: '1'
+      fill_in I18n.t('view.task.label.priority'), with: 'nothing'
       click_button I18n.t('view.task.button.submit')
       expect(Task.exists?(title: title)).to be true
       expect(page).to have_content title
@@ -24,7 +24,7 @@ describe 'タスク' do
       fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
       fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
       fill_in I18n.t('view.task.label.status'), with: 'todo'
-      fill_in I18n.t('view.task.label.priority'), with: '1'
+      fill_in I18n.t('view.task.label.priority'), with: 'nothing'
       click_button I18n.t('view.task.button.submit')
       expect(page).to have_content I18n.t('view.task.message.created')
     end
@@ -75,22 +75,48 @@ describe 'タスク' do
   end
 
   context 'タスクをソートする' do
-    let! (:new_task) { create(:new_task, due_at: '2020-01-01') }
-    let! (:old_task) { create(:old_task, due_at: '2000-01-01') }
-    it '終了期限が近い順でソートする' do
-      visit tasks_path
-      select I18n.t('view.task.sort.due_at'), from: 'sort'
-      click_button I18n.t('view.task.button.search')
-      expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(old_task.id))
-      expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(new_task.id))
+    context '終了期限でソートする' do
+      let! (:approaching_task) { create(:approaching_task) }
+      let! (:not_approaching_task) { create(:not_approaching_task) }
+      it '終了期限が近い順でソートする' do
+        visit tasks_path
+        select I18n.t('view.task.sort.due_at'), from: 'sort'
+        click_button I18n.t('view.task.button.search')
+        expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(approaching_task.id))
+        expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(not_approaching_task.id))
+      end
     end
 
-    it '作成日時が新しい順でソートする' do
-      visit tasks_path
-      select I18n.t('view.task.sort.created_at'), from: 'sort'
-      click_button I18n.t('view.task.button.search')
-      expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
-      expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
+    context '作成日時でソートする' do
+      let! (:new_task) { create(:new_task) }
+      let! (:old_task) { create(:old_task) }
+      it '作成日時が新しい順でソートする' do
+        visit tasks_path
+        select I18n.t('view.task.sort.created_at'), from: 'sort'
+        click_button I18n.t('view.task.button.search')
+        expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
+        expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
+      end
+    end
+
+    context '優先度でソートする' do
+      let! (:high_priority_task) { create(:high_priority_task) }
+      let! (:low_priority_task) { create(:low_priority_task) }
+      it '優先順が高い順でソートする' do
+        visit tasks_path
+        select I18n.t('view.task.sort.priority_desc'), from: 'sort'
+        click_button I18n.t('view.task.button.search')
+        expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(high_priority_task.id))
+        expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(low_priority_task.id))
+      end
+
+      it '優先順が低い順でソートする' do
+        visit tasks_path
+        select I18n.t('view.task.sort.priority_asc'), from: 'sort'
+        click_button I18n.t('view.task.button.search')
+        expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(low_priority_task.id))
+        expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(high_priority_task.id))
+      end
     end
   end
 
