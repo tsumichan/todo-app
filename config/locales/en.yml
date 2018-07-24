@@ -30,7 +30,6 @@ en:
         new: "New"
         edit: "Edit"
         delete: "Delte"
-        add: "Add a new task"
         back: "Back"
       sort:
         due_at: "Sort by due at"
