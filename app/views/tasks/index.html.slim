@@ -5,7 +5,6 @@
   div
     = text_field_tag :search, params[:search]
     = select_tag :status, options_for_select(@statuses), include_blank: true
-    = select_tag :priority, options_for_select(@priorities), include_blank: true
     = select_tag :sort, options_for_select(@sorts)
     = submit_tag t('view.task.button.search')
 
