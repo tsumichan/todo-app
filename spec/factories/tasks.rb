@@ -19,7 +19,7 @@ FactoryBot.define do
     end
 
     factory :not_approaching_task do
-      due_at Date.parse('2020-01-01')
+      due_at Date.today
     end
 
     factory :high_priority_task do
