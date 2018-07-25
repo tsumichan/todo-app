@@ -77,7 +77,7 @@ describe 'タスク' do
   context '終了期限でソートするとき' do
     let! (:approaching_task) { create(:approaching_task) }
     let! (:not_approaching_task) { create(:not_approaching_task) }
-    it '終了期限が近い順タスクが上に来ること' do
+    it '終了期限が近いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('view.task.sort.due_at'), from: 'sort'
       click_button I18n.t('view.task.button.search')
@@ -89,7 +89,7 @@ describe 'タスク' do
   context '作成日時でソートするとき' do
     let! (:new_task) { create(:new_task) }
     let! (:old_task) { create(:old_task) }
-    it '作成日時が新しい順タスクが上に来ること' do
+    it '作成日時が新しいタスクが上に来ること' do
       visit tasks_path
       select I18n.t('view.task.sort.created_at'), from: 'sort'
       click_button I18n.t('view.task.button.search')
