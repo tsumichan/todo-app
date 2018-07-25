@@ -75,8 +75,8 @@ describe 'タスク' do
   end
 
   context '終了期限でソートするとき' do
-    let! (:approaching_task) { create(:approaching_task) }
-    let! (:not_approaching_task) { create(:not_approaching_task) }
+    let! (:approaching_task) { create(:task) }
+    let! (:not_approaching_task) { create(:task, due_at: approaching_task.due_at + 1.day) }
     it '終了期限が近いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('view.task.sort.due_at'), from: 'sort'

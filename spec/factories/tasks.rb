@@ -14,14 +14,6 @@ FactoryBot.define do
       created_at Date.parse('2000-01-01')
     end
 
-    factory :approaching_task do
-      due_at Date.parse('2000-01-01')
-    end
-
-    factory :not_approaching_task do
-      due_at Date.today
-    end
-
     factory :high_priority_task do
       priority 'high'
     end
