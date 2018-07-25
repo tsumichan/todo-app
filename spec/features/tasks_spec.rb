@@ -101,7 +101,7 @@ describe 'タスク' do
   context '優先度でソートするとき' do
     let! (:high_priority_task) { create(:high_priority_task) }
     let! (:low_priority_task) { create(:low_priority_task) }
-    it '優先順が高い順タスクが上に来ること' do
+    it '優先順が高いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('view.task.sort.priority_desc'), from: 'sort'
       click_button I18n.t('view.task.button.search')
@@ -109,7 +109,7 @@ describe 'タスク' do
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(low_priority_task.id))
     end
 
-    it '優先順が低い順タスクが上に来ること' do
+    it '優先順が低いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('view.task.sort.priority_asc'), from: 'sort'
       click_button I18n.t('view.task.button.search')
