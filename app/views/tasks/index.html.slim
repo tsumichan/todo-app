@@ -27,4 +27,6 @@ table
             td = link_to t('view.task.link_text.delete'), task, method: :delete, data: {confirm: t('view.task.message.delete_confirm')}
     - else
       div = t('view.task.message.no_match_task')
+
+= paginate @tasks
 div = link_to t('view.task.link_text.new'), new_task_path
