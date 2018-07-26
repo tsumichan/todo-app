@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'kaminari'
 
 describe 'タスク' do
   let(:title) { 'テスト用タスク' }
@@ -153,6 +154,19 @@ describe 'タスク' do
       click_button I18n.t('views.task.button.search')
       searched_task = Task.search_by_title(test_title).search_by_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
+    end
+  end
+
+  context 'タスクが16件以上あるとき' do
+    let!(:tasks) { create_list(:task, 50)}
+    it 'ページネーションが表示されること' do
+      visit tasks_path
+      expect(page.all('nav span')[1]).to have_link('2', href: '/?page=2')
+    end
+
+    it '1ページあたり15件のタスクが表示されること' do
+      visit tasks_path
+      expect(page.all('tbody tr').count).to eq Kaminari.config.default_per_page
     end
   end
 end
