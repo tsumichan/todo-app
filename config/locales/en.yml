@@ -6,9 +6,11 @@ en:
         todo: "Todo"
         doing: "Doing"
         done: "Done"
-      sort:
-        due_at: "Sort by due at"
-        created_at: "Sort by created at"
+      priority:
+        nothing: ""
+        low: "★"
+        middle: "★★"
+        high: "★★★"
   views:
     task:
       label:
@@ -33,8 +35,12 @@ en:
         new: "New"
         edit: "Edit"
         delete: "Delte"
-        add: "Add a new task"
         back: "Back"
+      sort:
+        due_at: "Sort by due at"
+        created_at: "Sort by created at"
+        priority_desc: "Sort in descending order of high priority"
+        priority_asc: "Sort in descending order of low priority"
     pagination:
       first: "&laquo;"
       last: "&raquo;"

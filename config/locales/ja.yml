@@ -6,6 +6,11 @@ ja:
         todo: "未着手"
         doing: "着手中"
         done: "完了"
+      priority:
+        nothing: ""
+        low: "★"
+        middle: "★★"
+        high: "★★★"
   views:
     task:
       label:
@@ -34,6 +39,8 @@ ja:
       sort:
         due_at: "終了期限が近い順でソートする"
         created_at: "作成日時が新しい順でソートする"
+        priority_desc: "優先度が高い順でソートする"
+        priority_asc: "優先度が低い順でソートする"
     pagination:
       first: "&laquo;"
       last: "&raquo;"
