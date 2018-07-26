@@ -9,7 +9,7 @@ en:
       sort:
         due_at: "Sort by due at"
         created_at: "Sort by created at"
-  view:
+  views:
     task:
       label:
         title: "Title"
@@ -35,6 +35,12 @@ en:
         delete: "Delte"
         add: "Add a new task"
         back: "Back"
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
   activerecord:
     errors:
       messages:
