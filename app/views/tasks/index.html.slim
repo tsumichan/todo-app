@@ -6,15 +6,15 @@
     = text_field_tag :search, params[:search]
     = select_tag :status, options_for_select(@statuses), include_blank: true
     = select_tag :sort, options_for_select(@sorts)
-    = submit_tag t('view.task.button.search')
+    = submit_tag t('views.task.button.search')
 
 table
   thead
     tr
-      th = t('view.task.label.title')
-      th = t('view.task.label.due_at')
-      th = t('view.task.label.status')
-      th = t('view.task.label.priority')
+      th = t('views.task.label.title')
+      th = t('views.task.label.due_at')
+      th = t('views.task.label.status')
+      th = t('views.task.label.priority')
     - if @tasks.exists?
       tbody
         - @tasks.each do |task|
@@ -23,10 +23,9 @@ table
             td = task.due_at
             td = task.status_i18n
             td = task.priority
-            td = link_to t('view.task.link_text.edit'), edit_task_path(task.id)
-            td = link_to t('view.task.link_text.delete'), task, method: :delete, data: {confirm: t('view.task.message.delete_confirm')}
+            td = link_to t('views.task.link_text.edit'), edit_task_path(task.id)
+            td = link_to t('views.task.link_text.delete'), task, method: :delete, data: {confirm: t('views.task.message.delete_confirm')}
     - else
-      div = t('view.task.message.no_match_task')
-
+      div = t('views.task.message.no_match_task')
 = paginate @tasks
-div = link_to t('view.task.link_text.new'), new_task_path
+div = link_to t('views.task.link_text.new'), new_task_path

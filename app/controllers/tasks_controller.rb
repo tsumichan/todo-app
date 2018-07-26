@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
-    @sorts = [t("view.task.sort.created_at"), 0], [t("view.task.sort.due_at"), 1]
+    @sorts = [t('views.task.sort.created_at'), 0], [t('views.task.sort.due_at'), 1]
     @tasks = Task.search_by_title(params[:search]).search_by_status(params[:status]).sort_by_due_at(params[:sort]).page(params[:page])
   end
   def new
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to root_path, flash: { success: t('view.task.message.created')}
+      redirect_to root_path, flash: { success: t('views.task.message.created')}
     else
       render :new
     end
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to root_path, flash: { success: t('view.task.message.updated')}
+      redirect_to root_path, flash: { success: t('views.task.message.updated')}
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to root_path, flash: { success: t('view.task.message.deleted')}
+    redirect_to root_path, flash: { success: t('views.task.message.deleted')}
   end
 
   private
