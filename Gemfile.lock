@@ -258,7 +258,7 @@ DEPENDENCIES
   faker
   http_accept_language
   jbuilder (~> 2.5)
-  kaminari (~> 0.17.0)
+  kaminari
   launchy
   listen (>= 3.0.5, < 3.2)
   pg
