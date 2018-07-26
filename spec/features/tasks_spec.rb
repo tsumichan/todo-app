@@ -158,7 +158,7 @@ describe 'タスク' do
   end
 
   context 'タスクが16件以上あるとき' do
-    let!(:tasks) { create_list(:task, 50)}
+    let!(:tasks) { create_list(:task, 50) }
     it 'ページネーションが表示されること' do
       visit tasks_path
       expect(page.all('nav span')[1]).to have_link('2', href: '/?page=2')
