@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'kaminari'
 
 describe 'タスク' do
   let(:title) { 'テスト用タスク' }
@@ -8,25 +9,25 @@ describe 'タスク' do
   context '新規のタスクを作成するとき' do
     it 'タスクが作成できること' do
       visit new_task_path
-      fill_in I18n.t('view.task.label.title'), with: title
-      fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
-      fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('view.task.label.status'), with: 'todo'
-      fill_in I18n.t('view.task.label.priority'), with: 'nothing'
-      click_button I18n.t('view.task.button.submit')
+      fill_in I18n.t('views.task.label.title'), with: title
+      fill_in I18n.t('views.task.label.description'), with: 'テスト用タスクです'
+      fill_in I18n.t('views.task.label.due_at'), with: '2020-01-01 00:00:00'
+      fill_in I18n.t('views.task.label.status'), with: 'todo'
+      fill_in I18n.t('views.task.label.priority'), with: 'nothing'
+      click_button I18n.t('views.task.button.submit')
       expect(Task.exists?(title: title)).to be true
       expect(page).to have_content title
     end
 
     it '作成完了のフラッシュメッセージを表示すること' do
       visit new_task_path
-      fill_in I18n.t('view.task.label.title'), with: title
-      fill_in I18n.t('view.task.label.description'), with: 'テスト用タスクです'
-      fill_in I18n.t('view.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('view.task.label.status'), with: 'todo'
-      fill_in I18n.t('view.task.label.priority'), with: 'nothing'
-      click_button I18n.t('view.task.button.submit')
-      expect(page).to have_content I18n.t('view.task.message.created')
+      fill_in I18n.t('views.task.label.title'), with: title
+      fill_in I18n.t('views.task.label.description'), with: 'テスト用タスクです'
+      fill_in I18n.t('views.task.label.due_at'), with: '2020-01-01 00:00:00'
+      fill_in I18n.t('views.task.label.status'), with: 'todo'
+      fill_in I18n.t('views.task.label.priority'), with: 'nothing'
+      click_button I18n.t('views.task.button.submit')
+      expect(page).to have_content I18n.t('views.task.message.created')
     end
   end
 
@@ -34,17 +35,17 @@ describe 'タスク' do
     let(:task) { create(:task) }
     it '加えた変更を更新すること' do
       visit edit_task_path(task.id)
-      fill_in I18n.t('view.task.label.title'), with: title_edited
-      click_button I18n.t('view.task.button.submit')
+      fill_in I18n.t('views.task.label.title'), with: title_edited
+      click_button I18n.t('views.task.button.submit')
       expect(Task.exists?(title: title_edited)).to be true
       expect(page).to have_content title_edited
     end
 
     it '更新完了のフラッシュメッセージを表示すること' do
       visit edit_task_path(task.id)
-      fill_in I18n.t('view.task.label.title'), with: '変更タスク'
-      click_button I18n.t('view.task.button.submit')
-      expect(page).to have_content I18n.t('view.task.message.updated')
+      fill_in I18n.t('views.task.label.title'), with: '変更タスク'
+      click_button I18n.t('views.task.button.submit')
+      expect(page).to have_content I18n.t('views.task.message.updated')
     end
   end
 
@@ -52,15 +53,15 @@ describe 'タスク' do
     let!(:task) { create(:task) }
     it 'タスクを削除できること' do
       visit tasks_path
-      click_link I18n.t('view.task.link_text.delete')
+      click_link I18n.t('views.task.link_text.delete')
       expect(Task.exists?(title: title)).not_to be true
       expect(page).not_to have_content title
     end
 
     it '削除完了のフラッシュメッセージを表示すること' do
       visit tasks_path
-      click_link I18n.t('view.task.link_text.delete')
-      expect(page).to have_content I18n.t('view.task.message.deleted')
+      click_link I18n.t('views.task.link_text.delete')
+      expect(page).to have_content I18n.t('views.task.message.deleted')
     end
   end
 
@@ -79,8 +80,8 @@ describe 'タスク' do
     let! (:not_approaching_task) { create(:task, due_at: approaching_task.due_at + 1.day) }
     it '終了期限が近いタスクが上に来ること' do
       visit tasks_path
-      select I18n.t('view.task.sort.due_at'), from: 'sort'
-      click_button I18n.t('view.task.button.search')
+      select I18n.t('views.task.sort.due_at'), from: 'sort'
+      click_button I18n.t('views.task.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(approaching_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(not_approaching_task.id))
     end
@@ -91,8 +92,8 @@ describe 'タスク' do
     let! (:old_task) { create(:old_task) }
     it '作成日時が新しいタスクが上に来ること' do
       visit tasks_path
-      select I18n.t('view.task.sort.created_at'), from: 'sort'
-      click_button I18n.t('view.task.button.search')
+      select I18n.t('views.task.sort.created_at'), from: 'sort'
+      click_button I18n.t('views.task.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
     end
@@ -103,16 +104,16 @@ describe 'タスク' do
     let! (:low_priority_task) { create(:low_priority_task) }
     it '優先順が高いタスクが上に来ること' do
       visit tasks_path
-      select I18n.t('view.task.sort.priority_desc'), from: 'sort'
-      click_button I18n.t('view.task.button.search')
+      select I18n.t('views.task.sort.priority_desc'), from: 'sort'
+      click_button I18n.t('views.task.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(high_priority_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(low_priority_task.id))
     end
 
     it '優先順が低いタスクが上に来ること' do
       visit tasks_path
-      select I18n.t('view.task.sort.priority_asc'), from: 'sort'
-      click_button I18n.t('view.task.button.search')
+      select I18n.t('views.task.sort.priority_asc'), from: 'sort'
+      click_button I18n.t('views.task.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(low_priority_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(high_priority_task.id))
     end
@@ -123,15 +124,15 @@ describe 'タスク' do
     it '入力された文字列でタスクを検索できること' do
       visit tasks_path
       fill_in :search, with: test_title
-      click_button I18n.t('view.task.button.search')
+      click_button I18n.t('views.task.button.search')
       expect(page).to have_content test_title
     end
 
     it 'マッチするものがない場合、マッチするものがなかったことを知らせること' do
       visit tasks_path
       fill_in :search, with: 'サンプル'
-      click_button I18n.t('view.task.button.search')
-      expect(page).to have_content I18n.t('view.task.message.no_match_task')
+      click_button I18n.t('views.task.button.search')
+      expect(page).to have_content I18n.t('views.task.message.no_match_task')
     end
   end
 
@@ -139,7 +140,7 @@ describe 'タスク' do
     it '指定したステータスを持つタスクを検索すること' do
       visit tasks_path
       select I18n.t('enums.task.status.doing'), from: 'status'
-      click_button I18n.t('view.task.button.search')
+      click_button I18n.t('views.task.button.search')
       searched_task = Task.search_by_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end
@@ -150,9 +151,22 @@ describe 'タスク' do
       visit tasks_path
       fill_in 'search', with: test_title
       select I18n.t('enums.task.status.doing'), from: 'status'
-      click_button I18n.t('view.task.button.search')
+      click_button I18n.t('views.task.button.search')
       searched_task = Task.search_by_title(test_title).search_by_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
+    end
+  end
+
+  context 'タスクが16件以上あるとき' do
+    let!(:tasks) { create_list(:task, 50) }
+    it 'ページネーションが表示されること' do
+      visit tasks_path
+      expect(page.all('nav span')[1]).to have_link('2', href: '/?page=2')
+    end
+
+    it '1ページあたり15件のタスクが表示されること' do
+      visit tasks_path
+      expect(page.all('tbody tr').count).to eq Kaminari.config.default_per_page
     end
   end
 end

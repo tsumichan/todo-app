@@ -11,7 +11,7 @@ en:
         low: "★"
         middle: "★★"
         high: "★★★"
-  view:
+  views:
     task:
       label:
         title: "Title"
@@ -41,6 +41,12 @@ en:
         created_at: "Sort by created at"
         priority_desc: "Sort in descending order of high priority"
         priority_asc: "Sort in descending order of low priority"
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
   activerecord:
     errors:
       messages:

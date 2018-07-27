@@ -11,7 +11,7 @@ ja:
         low: "★"
         middle: "★★"
         high: "★★★"
-  view:
+  views:
     task:
       label:
         title: "タスク名"
@@ -41,6 +41,12 @@ ja:
         created_at: "作成日時が新しい順でソートする"
         priority_desc: "優先度が高い順でソートする"
         priority_asc: "優先度が低い順でソートする"
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
   activerecord:
     errors:
       messages:
