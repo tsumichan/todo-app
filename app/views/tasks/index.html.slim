@@ -41,4 +41,4 @@ div.container
         div.form-group = text_field_tag :search, params[:search], placeholder: 'タイトルで検索', class: 'form-control'
         div.form-group = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
         div.form-group = select_tag :sort, options_for_select(@sorts), class: 'form-control'
-        div.form-group = submit_tag t('views.task.button.search'), class: 'btn btn-outline-secondary right'
+        div.form-group = submit_tag t('views.task.button.search'), class: 'btn btn-outline-secondary'
