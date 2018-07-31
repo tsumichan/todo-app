@@ -40,7 +40,7 @@ div.container
         h4 タスクを検索する
         div.form-group
           label.small タイトルで検索する
-          = text_field_tag :search, params[:search], placeholder: 'タイトルで検索', class: 'form-control'
+          = text_field_tag :search, params[:search], class: 'form-control'
         div.form-group
           label.small ステータスで絞り込み
           = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
