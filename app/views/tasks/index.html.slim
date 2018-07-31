@@ -13,6 +13,8 @@ div.container
       = content_tag(:div, value, class: key)
   div.row
     div.col-lg-8
+      div.text-right
+        = link_to t('views.task.link_text.new'), new_task_path, class: 'btn btn-primary', id: 'new-task-button'
       table.table.table-hover
         thead.thead-light
           tr
@@ -35,10 +37,16 @@ div.container
           - else
             div = t('views.task.message.no_match_task')
       = paginate @tasks
-    div.col-lg-4
-      = link_to t('views.task.link_text.new'), new_task_path, class: 'btn btn-primary', id: 'new-task-button'
+    div.col-lg-4.mt-4
       = form_tag tasks_path, :method => 'get' do
-        div.form-group = text_field_tag :search, params[:search], placeholder: 'タイトルで検索', class: 'form-control'
-        div.form-group = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
-        div.form-group = select_tag :sort, options_for_select(@sorts), class: 'form-control'
+        h4 タスクを検索する
+        div.form-group
+          label.small タイトルで検索する
+          = text_field_tag :search, params[:search], placeholder: 'タイトルで検索', class: 'form-control'
+        div.form-group
+          label.small ステータスで絞り込み
+          = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
+        div.form-group
+          label.small ソートする
+          = select_tag :sort, options_for_select(@sorts), class: 'form-control'
         div.form-group = submit_tag t('views.task.button.search'), class: 'btn btn-outline-secondary'
