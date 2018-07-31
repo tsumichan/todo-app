@@ -37,10 +37,10 @@ ja:
         delete: "削除"
         back: "戻る"
       sort:
-        due_at: "終了期限が近い順でソートする"
-        created_at: "作成日時が新しい順でソートする"
-        priority_desc: "優先度が高い順でソートする"
-        priority_asc: "優先度が低い順でソートする"
+        due_at: "終了期限が近い順"
+        created_at: "作成日時が新しい順"
+        priority_desc: "優先度が高い順"
+        priority_asc: "優先度が低い順"
     pagination:
       first: "&laquo;"
       last: "&raquo;"

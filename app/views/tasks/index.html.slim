@@ -1,31 +1,50 @@
-- flash.each do |key, value|
-  = content_tag(:div, value, class: key)
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  = link_to 'Todo App', root_path, class: 'navbar-brand'
+  div.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        = link_to 'Home', root_path, class: 'nav-link'
 
-= form_tag tasks_path, :method => 'get' do
-  div
-    = text_field_tag :search, params[:search]
-    = select_tag :status, options_for_select(@statuses), include_blank: true
-    = select_tag :sort, options_for_select(@sorts)
-    = submit_tag t('views.task.button.search')
-
-table
-  thead
-    tr
-      th = t('views.task.label.title')
-      th = t('views.task.label.due_at')
-      th = t('views.task.label.status')
-      th = t('views.task.label.priority')
-    - if @tasks.exists?
-      tbody
-        - @tasks.each do |task|
+div.container
+  div.row
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: key)
+  div.row
+    div.col-lg-8
+      div.text-right
+        = link_to t('views.task.link_text.new'), new_task_path, class: 'btn btn-primary', id: 'new-task-button'
+      table.table.table-hover
+        thead.thead-light
           tr
-            td = link_to task.title, task
-            td = task.due_at
-            td = task.status_i18n
-            td = task.priority_i18n
-            td = link_to t('views.task.link_text.edit'), edit_task_path(task.id)
-            td = link_to t('views.task.link_text.delete'), task, method: :delete, data: {confirm: t('views.task.message.delete_confirm')}
-    - else
-      div = t('views.task.message.no_match_task')
-= paginate @tasks
-div = link_to t('views.task.link_text.new'), new_task_path
+            th = t('views.task.label.title')
+            th = t('views.task.label.due_at')
+            th = t('views.task.label.status')
+            th = t('views.task.label.priority')
+            th
+            th
+          - if @tasks.exists?
+            tbody
+              - @tasks.each do |task|
+                tr
+                  td = link_to task.title, task
+                  td = task.due_at
+                  td = task.status_i18n
+                  td = task.priority_i18n
+                  td = link_to t('views.task.link_text.edit'), edit_task_path(task.id)
+                  td = link_to t('views.task.link_text.delete'), task, method: :delete, data: {confirm: t('views.task.message.delete_confirm')}, class: 'delete-link'
+          - else
+            div = t('views.task.message.no_match_task')
+      = paginate @tasks
+    div.col-lg-4.mt-4
+      = form_tag tasks_path, method: :get do
+        h4 タスクを検索する
+        div.form-group
+          label.small タイトルで検索する
+          = text_field_tag :search, params[:search], class: 'form-control'
+        div.form-group
+          label.small ステータスで絞り込み
+          = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
+        div.form-group
+          label.small ソートする
+          = select_tag :sort, options_for_select(@sorts), class: 'form-control'
+        div.form-group = submit_tag t('views.task.button.search'), class: 'btn btn-outline-secondary'
