@@ -1,11 +1,12 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  a.navbar-brand href="#{root_path}" Todo App
   button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
     span.navbar-toggler-icon
   div.collapse.navbar-collapse#navbarSupportedContent
+  = link_to 'Todo App', root_path, class: 'navbar-brand'
+  div.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link href="#{root_path}" Home
+        = link_to 'Home', root_path, class: 'nav-link'
 
 div.container
   div.row
