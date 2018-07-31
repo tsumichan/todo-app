@@ -15,9 +15,13 @@
  */
  @import "bootstrap";
 
+// トップページ
 #new-task-button {
   margin: 20px 0;
 }
 .pagination {
   justify-content: center;
+}
+.delete-link {
+  color: red;
 }

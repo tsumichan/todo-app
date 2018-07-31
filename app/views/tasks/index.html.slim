@@ -31,7 +31,7 @@ div.container
                   td = task.status_i18n
                   td = task.priority_i18n
                   td = link_to t('views.task.link_text.edit'), edit_task_path(task.id)
-                  td = link_to t('views.task.link_text.delete'), task, method: :delete, data: {confirm: t('views.task.message.delete_confirm')}
+                  td = link_to t('views.task.link_text.delete'), task, method: :delete, data: {confirm: t('views.task.message.delete_confirm')}, class: 'delete-link'
           - else
             div = t('views.task.message.no_match_task')
       = paginate @tasks
