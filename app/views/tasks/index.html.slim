@@ -36,7 +36,7 @@ div.container
             div = t('views.task.message.no_match_task')
       = paginate @tasks
     div.col-lg-4.mt-4
-      = form_tag tasks_path, :method => 'get' do
+      = form_tag tasks_path, method: :get do
         h4 タスクを検索する
         div.form-group
           label.small タイトルで検索する
