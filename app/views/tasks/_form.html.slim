@@ -10,19 +10,19 @@ div.row
   div.col-lg-8.mx-auto
     = form_for @task do |f|
       div.form-group
-        = f.label :title, t('views.task.label.title')
+        = f.label :title, t('views.task.label.title'), class: 'font-weight-bold'
         = f.text_field :title, class: 'form-control', required: 'true'
       div.form-group
-        = f.label :description, t('views.task.label.description')
+        = f.label :description, t('views.task.label.description'), class: 'font-weight-bold'
         = f.text_area :description, class: 'form-control'
       div.form-group
-        = f.label :due_at, t('views.task.label.due_at')
+        = f.label :due_at, t('views.task.label.due_at'), class: 'font-weight-bold'
         = f.text_field :due_at, class: 'form-control'
       div.form-group
-        = f.label :status, t('views.task.label.status')
+        = f.label :status, t('views.task.label.status'), class: 'font-weight-bold'
         = f.text_field :status, class: 'form-control'
       div.form-group
-        = f.label :priority, t('views.task.label.priority')
+        = f.label :priority, t('views.task.label.priority'), class: 'font-weight-bold'
         = f.text_field :priority, class: 'form-control'
       div.form-group.text-center
         = link_to t('views.task.link_text.back'), :back, class: 'btn btn-light btn-lg mx-5'
