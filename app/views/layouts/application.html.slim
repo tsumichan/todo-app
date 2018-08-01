@@ -9,4 +9,11 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to 'Todo App', root_path, class: 'navbar-brand'
+      div.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            = link_to 'Home', root_path, class: 'nav-link'
+          
     = yield
