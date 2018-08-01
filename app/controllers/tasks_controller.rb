@@ -8,6 +8,8 @@ class TasksController < ApplicationController
   end
   def new
     @task = Task.new
+    @statuses = Task.statuses.keys.map { |k| [t("enums.task.status.#{k}"), k] }
+    @priorities = Task.priorities.keys.map { |k| [t("enums.task.priority.#{k}"), k]}
   end
 
   def create
@@ -23,6 +25,8 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @statuses = Task.statuses.keys.map { |k| [t("enums.task.status.#{k}"), k] }
+    @priorities = Task.priorities.keys.map { |k| [t("enums.task.priority.#{k}"), k]}
   end
 
   def update

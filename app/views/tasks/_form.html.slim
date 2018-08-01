@@ -16,9 +16,9 @@
     = f.text_field :due_at
   div
     = f.label :status, t('views.task.label.status')
-    = f.text_field :status
+    = f.select :status, @statuses
   div
     = f.label :priority, t('views.task.label.priority')
-    = f.text_field :priority
+    = f.select :priority, @priorities
   div
     = f.submit t('views.task.button.submit')
