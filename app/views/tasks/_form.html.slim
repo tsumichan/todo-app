@@ -1,24 +1,29 @@
-- if @task.errors.any?
-  div
-    ul
-      - @task.errors.full_messages.each do |message|
-        li = message
+div.row
+  div.col-lg-8.mx-auto
+    - if @task.errors.any?
+      div
+        ul
+          - @task.errors.full_messages.each do |message|
+            li = message
 
-= form_for @task do |f|
-  div
-    = f.label :title, t('views.task.label.title')
-    = f.text_field :title
-  div
-    = f.label :description, t('views.task.label.description')
-    = f.text_area :description
-  div
-    = f.label :due_at, t('views.task.label.due_at')
-    = f.text_field :due_at
-  div
-    = f.label :status, t('views.task.label.status')
-    = f.select :status, @statuses
-  div
-    = f.label :priority, t('views.task.label.priority')
-    = f.select :priority, @priorities
-  div
-    = f.submit t('views.task.button.submit')
+div.row
+  div.col-lg-8.mx-auto
+    = form_for @task do |f|
+      div.form-group.required
+        = f.label :title, t('views.task.label.title'), class: 'font-weight-bold control-label'
+        = f.text_field :title, class: 'form-control', required: 'true'
+      div.form-group
+        = f.label :description, t('views.task.label.description'), class: 'font-weight-bold'
+        = f.text_area :description, class: 'form-control'
+      div.form-group
+        = f.label :due_at, t('views.task.label.due_at'), class: 'font-weight-bold'
+        = f.text_field :due_at, class: 'form-control'
+      div.form-group
+        = f.label :status, t('views.task.label.status'), class: 'font-weight-bold'
+        = f.select :status, @statuses, class: 'form-control'
+      div.form-group
+        = f.label :priority, t('views.task.label.priority'), class: 'font-weight-bold'
+        = f.select :priority, @priorities, class: 'form-control'
+      div.form-group.text-center
+        = link_to t('views.task.link_text.back'), :back, class: 'btn btn-light btn-lg mx-5'
+        = f.submit t('views.task.button.submit'), class: 'btn btn-primary btn-lg mx-5'

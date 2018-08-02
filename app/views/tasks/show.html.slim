@@ -1,14 +1,20 @@
-ul
-  li
-    = @task.title
-  li
-    = @task.description
-  li
-    = @task.due_at
-  li
-    = @task.status
-  li
-    = @task.priority
-
-div
-  = link_to "戻る", :back
+div.container
+  div.text-center
+    h1 = @task.title
+  div.row
+    div.col-lg-8.mx-auto
+      div.form-group
+        label.font-weight-bold = t('views.task.label.description')
+        div.form-control-plaintext.pl-3 = @task.description
+      div.form-group
+        label.font-weight-bold = t('views.task.label.due_at')
+        div.form-control-plaintext.pl-3 = @task.due_at
+      div.form-group
+        label.font-weight-bold = t('views.task.label.status')
+        div.form-control-plaintext.pl-3 = @task.status_i18n
+      div.form-group
+        label.font-weight-bold = t('views.task.label.priority')
+        div.form-control-plaintext.pl-3 = @task.priority_i18n
+      div.form-group.text-center
+        = link_to t('views.task.link_text.back'), root_path, class: 'btn btn-light btn-lg mx-5'
+        = link_to t('views.task.link_text.edit'), edit_task_path, class: 'btn btn-primary btn-lg mx-5'
