@@ -18,8 +18,8 @@ div.row
       div.form-group
         = f.label :due_at, t('views.task.label.due_at'), class: 'font-weight-bold'
         div.input-group.date
-          = f.text_field :due_at, class: 'form-control due_at-input', id: 'due_at', data: { target: '#due_at' }
-          div.input-group-append data-target="#due_at" data-toggle="datetimepicker"
+          = f.text_field :due_at, class: 'form-control due_at-input', data: { target: '#task_due_at' }
+          div.input-group-append data-target="#task_due_at" data-toggle="datetimepicker"
             div.input-group-text
               i.fa.fa-calendar
       div.form-group
@@ -34,7 +34,7 @@ div.row
 
 javascript:
   $(function () {
-    $('#due_at').datetimepicker({
+    $('#task_due_at').datetimepicker({
       dayViewHeaderFormat: 'YYYY年 MMMM',
       locale: 'ja',
       showOn: 'focus'
