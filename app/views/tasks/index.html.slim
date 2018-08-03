@@ -1,7 +1,9 @@
 div.container
-  div.row
-    - flash.each do |key, value|
-      = content_tag(:div, value, class: key)
+  - flash.each do |key, value|
+    = content_tag(:div, class: "alert alert-#{key} alert-dismissible fade show", role: "alert") do
+      = value
+      button.close type='button' data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
   div.row
     div.col-lg-8
       div.text-right
