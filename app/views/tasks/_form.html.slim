@@ -11,7 +11,7 @@ div.row
     = form_for @task do |f|
       div.form-group.required
         = f.label :title, t('views.task.label.title'), class: 'font-weight-bold control-label'
-        = f.text_field :title, class: 'form-control'
+        = f.text_field :title, class: 'form-control', required: true
       div.form-group
         = f.label :description, t('views.task.label.description'), class: 'font-weight-bold'
         = f.text_area :description, class: 'form-control'
