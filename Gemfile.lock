@@ -56,6 +56,9 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap4-datetime-picker-rails (0.1.8)
+      jquery-rails (~> 4.2, >= 4.2.0)
+      momentjs-rails (~> 2.10, >= 2.10.5)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.2.1)
@@ -94,6 +97,8 @@ GEM
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.25)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http_accept_language (2.1.1)
@@ -137,6 +142,8 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
     msgpack (1.2.4)
     multi_json (1.13.1)
     nio4r (2.3.1)
@@ -269,6 +276,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap
+  bootstrap4-datetime-picker-rails
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
@@ -277,12 +285,14 @@ DEPENDENCIES
   enum_help
   factory_bot_rails
   faker
+  font-awesome-rails
   http_accept_language
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
   launchy
   listen (>= 3.0.5, < 3.2)
+  momentjs-rails
   pg
   pry-byebug
   pry-doc
