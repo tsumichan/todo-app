@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  include TasksHelper
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,8 +9,6 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @statuses = get_status_select_options
-    @priorities = get_priority_select_options
   end
 
   def create

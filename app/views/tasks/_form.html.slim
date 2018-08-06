@@ -24,10 +24,10 @@ div.row
               i.fa.fa-calendar
       div.form-group
         = f.label :status, t('views.task.label.status'), class: 'font-weight-bold'
-        = f.select :status, @statuses, {}, { class: 'form-control'}
+        = f.select :status, get_status_select_options, {}, { class: 'form-control'}
       div.form-group
         = f.label :priority, t('views.task.label.priority'), class: 'font-weight-bold'
-        = f.select :priority, @priorities, {}, { class: 'form-control' }
+        = f.select :priority, get_priority_select_options, {}, { class: 'form-control' }
       div.form-group.text-center
         = link_to t('views.task.link_text.back'), :back, class: 'btn btn-light btn-lg mx-5'
         = f.submit t('views.task.button.submit'), class: 'btn btn-primary btn-lg mx-5'
