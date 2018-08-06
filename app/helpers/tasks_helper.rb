@@ -4,6 +4,6 @@ module TasksHelper
   end
 
   def get_priority_select_options
-    Task.priorities.keys.map { |k| [t("enums.task.priority.#{k}"), k]}
+    Task.priorities.keys.map { |k| [t("enums.task.priority.#{k}"), k] }
   end
 end
