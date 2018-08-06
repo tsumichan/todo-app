@@ -11,9 +11,10 @@ describe 'タスク' do
       visit new_task_path
       fill_in I18n.t('views.task.label.title'), with: title
       fill_in I18n.t('views.task.label.description'), with: 'テスト用タスクです'
-      fill_in I18n.t('views.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('views.task.label.status'), with: 'todo'
-      fill_in I18n.t('views.task.label.priority'), with: 'nothing'
+      save_and_open_page
+      fill_in I18n.t('views.task.label.due_at'), with: '2020/01/01 00:00'
+      select '完了', from: I18n.t('views.task.label.status')
+      select '', from: I18n.t('views.task.label.priority')
       click_button I18n.t('views.task.button.submit')
       expect(Task.exists?(title: title)).to be true
       expect(page).to have_content title
@@ -23,9 +24,9 @@ describe 'タスク' do
       visit new_task_path
       fill_in I18n.t('views.task.label.title'), with: title
       fill_in I18n.t('views.task.label.description'), with: 'テスト用タスクです'
-      fill_in I18n.t('views.task.label.due_at'), with: '2020-01-01 00:00:00'
-      fill_in I18n.t('views.task.label.status'), with: 'todo'
-      fill_in I18n.t('views.task.label.priority'), with: 'nothing'
+      fill_in I18n.t('views.task.label.due_at'), with: '2020/01/01 00:00'
+      select '完了', from: I18n.t('views.task.label.status')
+      select '', from: I18n.t('views.task.label.priority')
       click_button I18n.t('views.task.button.submit')
       expect(page).to have_content I18n.t('views.task.message.created')
     end
