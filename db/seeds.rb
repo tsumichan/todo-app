@@ -10,3 +10,11 @@ require 'faker'
     created_at: Faker::Time.backward(30, :all)
   )
 end
+
+10.times do |i|
+  User.create(
+    name: Faker::Internet.user_name,
+    password:  Faker::Internet.password,
+    role: Faker::Number.between(0, 1)
+  )
+end
