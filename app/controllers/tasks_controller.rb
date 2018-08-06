@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to root_path, flash: { success: t('views.task.message.created')}
+      redirect_to root_path, flash: { success: t('views.task.message.created') }
     else
       render :new
     end
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to root_path, flash: { success: t('views.task.message.updated')}
+      redirect_to root_path, flash: { success: t('views.task.message.updated') }
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to root_path, flash: { success: t('views.task.message.deleted')}
+    redirect_to root_path, flash: { success: t('views.task.message.deleted') }
   end
 
   private
