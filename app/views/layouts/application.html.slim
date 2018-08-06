@@ -4,10 +4,9 @@ html
     title TodoApp
     = csrf_meta_tags
     = csp_meta_tag
-
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
+    script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/ja.js"
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-4
       = link_to 'Todo App', root_path, class: 'navbar-brand'
@@ -15,5 +14,4 @@ html
         ul.navbar-nav.mr-auto
           li.nav-item.active
             = link_to 'Home', root_path, class: 'nav-link'
-          
     = yield
