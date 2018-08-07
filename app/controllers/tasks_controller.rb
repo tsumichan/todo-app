@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     # ログイン処理がまだないので、手動で User の id を入れる
-    # @task.user_id = User.last.id
+    @task.user_id = User.last.id
     if @task.save
       redirect_to root_path, flash: { success: t('views.task.message.created') }
     else
