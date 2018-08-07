@@ -7,6 +7,7 @@ describe 'タスク' do
   let(:test_title) { 'テスト' }
 
   context '新規のタスクを作成するとき' do
+    let(:user) { create :user, id: 1 }
     it 'タスクが作成できること' do
       visit new_task_path
       fill_in I18n.t('views.task.label.title'), with: title

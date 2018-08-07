@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = 1
     if @task.save
       redirect_to root_path, flash: { success: t('views.task.message.created') }
     else
