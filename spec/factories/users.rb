@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
-    name ""
-    password ""
+    name "test_user_name"
+    password "password"
     role 1
   end
 end
