@@ -1,6 +1,6 @@
 require 'faker'
 
-10.times do |i|
+50.times do |i|
   Task.create(
     title: "タスク#{i}",
     description:  "これはタスク#{i}です",
