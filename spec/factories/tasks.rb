@@ -5,6 +5,7 @@ FactoryBot.define do
     due_at Date.parse('2020-01-01')
     status 'todo'
     priority 'nothing'
+    user { create :user }
 
     factory :new_task do
       created_at Date.parse('2020-01-01')

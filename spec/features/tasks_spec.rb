@@ -7,11 +7,11 @@ describe 'タスク' do
   let(:test_title) { 'テスト' }
 
   context '新規のタスクを作成するとき' do
+    let!(:user) { create :user}
     it 'タスクが作成できること' do
       visit new_task_path
       fill_in I18n.t('views.task.label.title'), with: title
       fill_in I18n.t('views.task.label.description'), with: 'テスト用タスクです'
-      save_and_open_page
       fill_in I18n.t('views.task.label.due_at'), with: '2020/01/01 00:00'
       select '完了', from: I18n.t('views.task.label.status')
       select '', from: I18n.t('views.task.label.priority')
