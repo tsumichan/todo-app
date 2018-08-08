@@ -1,45 +1,39 @@
-div.container
-  - flash.each do |key, value|
-    = content_tag(:div, class: "alert alert-#{key} alert-dismissible fade show", role: "alert") do
-      = value
-      button.close type='button' data-dismiss="alert" aria-label="Close"
-        span aria-hidden="true" &times;
-  div.row
-    div.col-lg-8
-      div.text-right
-        = link_to t('views.task.link_text.new'), new_task_path, class: 'btn btn-primary', id: 'new-task-button'
-      table.table.table-hover
-        thead.thead-light
-          tr
-            th = t('views.task.label.title')
-            th = t('views.task.label.due_at')
-            th = t('views.task.label.status')
-            th = t('views.task.label.priority')
-            th
-            th
-          - if @tasks.exists?
-            tbody
-              - @tasks.each do |task|
-                tr
-                  td = link_to task.title, task
-                  td = l(task.due_at, format: :long) unless task.due_at.nil?
-                  td = task.status_i18n
-                  td = task.priority_i18n
-                  td = link_to t('views.task.link_text.edit'), edit_task_path(task.id)
-                  td = link_to t('views.task.link_text.delete'), task, method: :delete, data: {confirm: t('views.task.message.delete_confirm')}, class: 'delete-link'
-          - else
-            div = t('views.task.message.no_match_task')
-      = paginate @tasks
-    div.col-lg-4
-      = form_tag tasks_path, method: :get do
-        h4 タスクを検索する
-        div.form-group
-          label.small タイトルで検索する
-          = text_field_tag :search, params[:search], class: 'form-control'
-        div.form-group
-          label.small ステータスで絞り込み
-          = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
-        div.form-group
-          label.small ソートする
-          = select_tag :sort, options_for_select(@sorts), class: 'form-control'
-        div.form-group = submit_tag t('views.task.button.search'), class: 'btn btn-outline-secondary'
+div.row
+  div.col-lg-8
+    div.text-right
+      = link_to t('views.task.link_text.new'), new_task_path, class: 'btn btn-primary', id: 'new-task-button'
+    table.table.table-hover
+      thead.thead-light
+        tr
+          th = t('views.task.label.title')
+          th = t('views.task.label.due_at')
+          th = t('views.task.label.status')
+          th = t('views.task.label.priority')
+          th
+          th
+        - if @tasks.exists?
+          tbody
+            - @tasks.each do |task|
+              tr
+                td = link_to task.title, task
+                td = l(task.due_at, format: :long) unless task.due_at.nil?
+                td = task.status_i18n
+                td = task.priority_i18n
+                td = link_to t('views.task.link_text.edit'), edit_task_path(task.id)
+                td = link_to t('views.task.link_text.delete'), task, method: :delete, data: {confirm: t('views.task.message.delete_confirm')}, class: 'delete-link'
+        - else
+          div = t('views.task.message.no_match_task')
+    = paginate @tasks
+  div.col-lg-4
+    = form_tag tasks_path, method: :get do
+      h4 タスクを検索する
+      div.form-group
+        label.small タイトルで検索する
+        = text_field_tag :search, params[:search], class: 'form-control'
+      div.form-group
+        label.small ステータスで絞り込み
+        = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
+      div.form-group
+        label.small ソートする
+        = select_tag :sort, options_for_select(@sorts), class: 'form-control'
+      div.form-group = submit_tag t('views.task.button.search'), class: 'btn btn-outline-secondary'

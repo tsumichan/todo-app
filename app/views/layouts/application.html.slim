@@ -14,4 +14,11 @@ html
         ul.navbar-nav.mr-auto
           li.nav-item.active
             = link_to 'Home', root_path, class: 'nav-link'
-    = yield
+    div.container
+      - flash.each do |key, value|
+        = content_tag(:div, class: "alert alert-#{key} alert-dismissible fade show", role: "alert") do
+          = value
+          button.close type='button' data-dismiss="alert" aria-label="Close"
+            span aria-hidden="true" &times;
+
+      = yield
