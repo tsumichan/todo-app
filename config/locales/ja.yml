@@ -53,6 +53,10 @@ ja:
         password: "パスワード"
       button:
         log_in: "ログイン"
+      message:
+        log_in_success: "ログインしました"
+        log_out_success: "ログアウトしました"
+        log_in_failed: "ログインできませんでした"
   activerecord:
     errors:
       messages:

@@ -53,6 +53,10 @@ en:
         password: "Password"
       button:
         log_in: "Log in"
+      message:
+        log_in_success: "Login Successed"
+        log_out_success: "Logout Successed"
+        log_in_failed: "Login Failed"
   activerecord:
     errors:
       messages:
