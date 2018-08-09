@@ -47,6 +47,12 @@ ja:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+    user:
+      label:
+        user_name: "ユーザー名"
+        password: "パスワード"
+      button:
+        log_in: "ログイン"
   activerecord:
     errors:
       messages:

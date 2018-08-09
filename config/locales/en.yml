@@ -47,6 +47,12 @@ en:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+    user:
+      label:
+        user_name: "User name"
+        password: "Password"
+      button:
+        log_in: "Log in"
   activerecord:
     errors:
       messages:
