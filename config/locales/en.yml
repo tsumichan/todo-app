@@ -57,6 +57,7 @@ en:
         log_in_success: "Login Successed"
         log_out_success: "Logout Successed"
         log_in_failed: "Login Failed"
+        require_login: "Please Login"
   activerecord:
     errors:
       messages:

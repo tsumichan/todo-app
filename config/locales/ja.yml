@@ -57,6 +57,7 @@ ja:
         log_in_success: "ログインしました"
         log_out_success: "ログアウトしました"
         log_in_failed: "ログインできませんでした"
+        require_login: "ログインしてください"
   activerecord:
     errors:
       messages:
