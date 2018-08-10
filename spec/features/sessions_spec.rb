@@ -23,3 +23,25 @@ describe 'ログイン' do
     end
   end
 end
+
+describe 'ログアウト' do
+  before do
+    @user = create(:user)
+    visit '/login'
+    fill_in I18n.t('views.user.label.user_name'), with: 'test_user_name'
+    fill_in I18n.t('views.user.label.password'), with: 'password'
+    click_button I18n.t('views.user.button.log_in')
+  end
+
+  context 'ログアウトするとき' do
+    it '正常にログアウトができること' do
+      click_link I18n.t('views.header.link.log_out')
+      expect(current_path).to eq login_path
+    end
+
+    it 'ログアウト完了のフラッシュメッセージを表示すること' do
+      click_link I18n.t('views.header.link.log_out')
+      expect(page).to have_content I18n.t('views.user.message.log_out_success')
+    end
+  end
+end
