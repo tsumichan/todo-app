@@ -12,6 +12,10 @@ en:
         middle: "★★"
         high: "★★★"
   views:
+    header:
+      link:
+        task_list: "Task List"
+        log_out: "Log Out"
     task:
       label:
         title: "Title"

@@ -12,6 +12,10 @@ ja:
         middle: "★★"
         high: "★★★"
   views:
+    header:
+      link:
+        task_list: "タスク一覧"
+        log_out: "ログアウト"
     task:
       label:
         title: "タスク名"
