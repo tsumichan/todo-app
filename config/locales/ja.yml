@@ -62,6 +62,11 @@ ja:
         log_out_success: "ログアウトしました"
         log_in_failed: "ログインできませんでした"
         require_login: "ログインしてください"
+      link_text:
+        new: "新規ユーザーを作成"
+        edit: "編集"
+        delete: "削除"
+        back: "戻る"
   activerecord:
     errors:
       messages:

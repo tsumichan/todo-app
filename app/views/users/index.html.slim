@@ -1,0 +1,20 @@
+div.row
+  div.col-lg-12
+    div.text-right
+      = link_to t('views.user.link_text.new'), href='#', class: 'btn btn-primary', id: 'new-task-button'
+    table.table.table-hover
+      thead.thead-light
+        tr
+          th id
+          th ユーザー名
+          th ロール
+          th
+          th
+      tbody
+        - @users.each do |user|
+          tr
+            td = user.id
+            td = user.name
+            td = user.role
+            td = link_to t('views.user.link_text.edit'), href='#'
+            td = link_to t('views.user.link_text.delete'), href='#'

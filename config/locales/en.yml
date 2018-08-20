@@ -62,6 +62,11 @@ en:
         log_out_success: "Logout Successed"
         log_in_failed: "Login Failed"
         require_login: "Please Login"
+      link_text:
+        new: "New"
+        edit: "Edit"
+        delete: "Delete"
+        back: "Back"
   activerecord:
     errors:
       messages:
