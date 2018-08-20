@@ -5,9 +5,15 @@ describe 'タスク' do
   let(:title) { 'テスト用タスク' }
   let(:title_edited) { '変更用タスク' }
   let(:test_title) { 'テスト' }
+  let!(:user) { create(:user) }
+  before do
+    visit '/login'
+    fill_in I18n.t('views.user.label.user_name'), with: 'test_user_name'
+    fill_in I18n.t('views.user.label.password'), with: 'password'
+    click_button I18n.t('views.user.button.log_in')
+  end
 
   context '新規のタスクを作成するとき' do
-    let!(:user) { create :user}
     it 'タスクが作成できること' do
       visit new_task_path
       fill_in I18n.t('views.task.label.title'), with: title
@@ -33,7 +39,7 @@ describe 'タスク' do
   end
 
   context '既存のタスクを更新するとき' do
-    let(:task) { create(:task) }
+    let(:task) { create(:task, user_id: user.id) }
     it '加えた変更を更新すること' do
       visit edit_task_path(task.id)
       fill_in I18n.t('views.task.label.title'), with: title_edited
@@ -51,7 +57,7 @@ describe 'タスク' do
   end
 
   context '既存のタスクを削除するとき' do
-    let!(:task) { create(:task) }
+    let!(:task) { create(:task, user_id: user.id) }
     it 'タスクを削除できること' do
       visit tasks_path
       click_link I18n.t('views.task.link_text.delete')
@@ -67,8 +73,8 @@ describe 'タスク' do
   end
 
   context 'タスクを作成日時の降順で表示するとき' do
-    let! (:new_task) { create(:new_task) }
-    let! (:old_task) { create(:old_task) }
+    let! (:new_task) { create(:new_task, user_id: user.id) }
+    let! (:old_task) { create(:old_task, user_id: user.id) }
     it 'タスクを降順でソートすること' do
       visit tasks_path
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
@@ -77,8 +83,8 @@ describe 'タスク' do
   end
 
   context '終了期限でソートするとき' do
-    let! (:approaching_task) { create(:task) }
-    let! (:not_approaching_task) { create(:task, due_at: approaching_task.due_at + 1.day) }
+    let! (:approaching_task) { create(:task, user_id: user.id) }
+    let! (:not_approaching_task) { create(:task, due_at: approaching_task.due_at + 1.day, user_id: user.id) }
     it '終了期限が近いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('views.task.sort.due_at'), from: 'sort'
@@ -89,8 +95,8 @@ describe 'タスク' do
   end
 
   context '作成日時でソートするとき' do
-    let! (:new_task) { create(:new_task) }
-    let! (:old_task) { create(:old_task) }
+    let! (:new_task) { create(:new_task, user_id: user.id) }
+    let! (:old_task) { create(:old_task, user_id: user.id) }
     it '作成日時が新しいタスクが上に来ること' do
       visit tasks_path
       select I18n.t('views.task.sort.created_at'), from: 'sort'
@@ -101,8 +107,8 @@ describe 'タスク' do
   end
 
   context '優先度でソートするとき' do
-    let! (:high_priority_task) { create(:high_priority_task) }
-    let! (:low_priority_task) { create(:low_priority_task) }
+    let! (:high_priority_task) { create(:high_priority_task, user_id: user.id) }
+    let! (:low_priority_task) { create(:low_priority_task, user_id: user.id) }
     it '優先順が高いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('views.task.sort.priority_desc'), from: 'sort'
@@ -121,7 +127,7 @@ describe 'タスク' do
   end
 
   context 'タスクをタイトルで検索するとき' do
-    let!(:task) { create(:task) }
+    let!(:task) { create(:task, user_id: user.id) }
     it '入力された文字列でタスクを検索できること' do
       visit tasks_path
       fill_in :search, with: test_title
@@ -159,7 +165,7 @@ describe 'タスク' do
   end
 
   context 'タスクが16件以上あるとき' do
-    let!(:tasks) { create_list(:task, 50) }
+    let!(:tasks) { create_list(:task, 50, user_id: user.id) }
     it 'ページネーションが表示されること' do
       visit tasks_path
       expect(page.all('nav ul')[1]).to have_link('2', href: '/?page=2')

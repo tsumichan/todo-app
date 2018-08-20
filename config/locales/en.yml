@@ -12,6 +12,10 @@ en:
         middle: "★★"
         high: "★★★"
   views:
+    header:
+      link:
+        task_list: "Task List"
+        log_out: "Log Out"
     task:
       label:
         title: "Title"
@@ -47,6 +51,17 @@ en:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+    user:
+      label:
+        user_name: "User name"
+        password: "Password"
+      button:
+        log_in: "Log in"
+      message:
+        log_in_success: "Login Successed"
+        log_out_success: "Logout Successed"
+        log_in_failed: "Login Failed"
+        require_login: "Please Login"
   activerecord:
     errors:
       messages:

@@ -12,6 +12,10 @@ ja:
         middle: "★★"
         high: "★★★"
   views:
+    header:
+      link:
+        task_list: "タスク一覧"
+        log_out: "ログアウト"
     task:
       label:
         title: "タスク名"
@@ -47,6 +51,17 @@ ja:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+    user:
+      label:
+        user_name: "ユーザー名"
+        password: "パスワード"
+      button:
+        log_in: "ログイン"
+      message:
+        log_in_success: "ログインしました"
+        log_out_success: "ログアウトしました"
+        log_in_failed: "ログインできませんでした"
+        require_login: "ログインしてください"
   activerecord:
     errors:
       messages:

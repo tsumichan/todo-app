@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Session
+  helper_method :logged_in?
   before_action :set_locale
 
   private
