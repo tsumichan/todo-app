@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :login_check
+  before_action :logged_in?
 
   def index
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
@@ -50,8 +50,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
-  def login_check
-    redirect_to login_path, flash: { warning: t('views.user.message.require_login') } unless logged_in?
+  def logged_in?
+    redirect_to login_path, flash: { warning: t('views.user.message.require_login') } unless is_current_user?
   end
-
 end
