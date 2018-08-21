@@ -1,13 +1,14 @@
 div.row
   div.col-lg-12
+    h2 ユーザー 一覧
     div.text-right
       = link_to t('views.user.link_text.new'), href='#', class: 'btn btn-primary', id: 'new-task-button'
     table.table.table-hover
       thead.thead-light
         tr
-          th id
-          th ユーザー名
-          th ロール
+          th = t('views.user.label.id')
+          th = t('views.user.label.user_name')
+          th = t('views.user.label.role')
           th
           th
       tbody

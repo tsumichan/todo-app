@@ -16,6 +16,7 @@ ja:
       link:
         task_list: "タスク一覧"
         log_out: "ログアウト"
+        admin_page: "管理画面"
     task:
       label:
         title: "タスク名"
@@ -53,8 +54,10 @@ ja:
       truncate: "..."
     user:
       label:
+        id: "id"
         user_name: "ユーザー名"
         password: "パスワード"
+        role: "ロール"
       button:
         log_in: "ログイン"
       message:

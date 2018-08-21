@@ -16,6 +16,7 @@ en:
       link:
         task_list: "Task List"
         log_out: "Log Out"
+        admin_page: "Admin Page"
     task:
       label:
         title: "Title"
@@ -53,8 +54,10 @@ en:
       truncate: "..."
     user:
       label:
+        id: "id"
         user_name: "User name"
         password: "Password"
+        role: "Role"
       button:
         log_in: "Log in"
       message:
