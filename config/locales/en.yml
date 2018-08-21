@@ -11,6 +11,10 @@ en:
         low: "★"
         middle: "★★"
         high: "★★★"
+    user:
+      role:
+        admin: "Admin"
+        common: "Common"
   views:
     header:
       link:

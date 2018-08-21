@@ -11,6 +11,10 @@ ja:
         low: "★"
         middle: "★★"
         high: "★★★"
+    user:
+      role:
+        admin: "管理者"
+        common: "一般"
   views:
     header:
       link:
