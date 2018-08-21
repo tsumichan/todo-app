@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   include Session
-  helper_method :logged_in?
+  helper_method :logged_in?, :is_admin?
   before_action :set_locale
-  helper_method :is_admin?
 
   private
     def set_locale

@@ -51,10 +51,7 @@ class TasksController < ApplicationController
   end
 
   def login_check
-    unless logged_in?
-      flash[:warning] = t('views.user.message.require_login')
-      redirect_to login_path
-    end
+    redirect_to login_path, flash: { warning: t('views.user.message.require_login') } unless logged_in?
   end
 
 end
