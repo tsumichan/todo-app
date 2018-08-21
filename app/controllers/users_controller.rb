@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :is_admin?
+  before_action :logged_in?, :is_admin?
 
   def index
     @users = User.all

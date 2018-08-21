@@ -49,8 +49,4 @@ class TasksController < ApplicationController
   def set_task
     @task = Task.find(params[:id])
   end
-
-  def logged_in?
-    redirect_to login_path, flash: { warning: t('views.user.message.require_login') } unless is_current_user?
-  end
 end
