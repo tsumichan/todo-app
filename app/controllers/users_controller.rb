@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :login_check
-  helper_method :logged_in?
+  before_action :is_admin?
+
   def index
     @users = User.all
   end

@@ -16,6 +16,7 @@ html
           - if logged_in?
             span.nav-link.active = @current_user.name
             = link_to t('views.header.link.log_out'), logout_path, method: :delete, class: 'nav-link'
+            = link_to '管理画面', admin_path, class: 'nav-link' if is_admin?
     div.container
       - flash.each do |key, value|
         = content_tag(:div, class: "alert alert-#{key} alert-dismissible fade show", role: "alert") do
