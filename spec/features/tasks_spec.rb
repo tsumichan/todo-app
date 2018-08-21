@@ -8,7 +8,7 @@ describe 'タスク' do
   let!(:user) { create(:user) }
   before do
     visit '/login'
-    fill_in I18n.t('views.user.label.user_name'), with: 'test_user_name'
+    fill_in I18n.t('views.user.label.user_name'), with: 'admin_user'
     fill_in I18n.t('views.user.label.password'), with: 'password'
     click_button I18n.t('views.user.button.log_in')
   end
