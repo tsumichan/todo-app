@@ -25,8 +25,8 @@ describe 'ログイン' do
 end
 
 describe 'ログアウト' do
+  let!(:user) { create :user }
   before do
-    @user = create(:user)
     visit '/login'
     fill_in I18n.t('views.user.label.user_name'), with: user.name
     fill_in I18n.t('views.user.label.password'), with: 'password'
