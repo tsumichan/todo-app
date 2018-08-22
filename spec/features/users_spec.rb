@@ -35,7 +35,7 @@ describe '管理画面' do
     end
 
     it 'ユーザー 一覧ページにアクセスできないこと' do
-      visit admin_path
+      visit users_path
       expect(page).not_to have_content 'ユーザー 一覧'
     end
   end
