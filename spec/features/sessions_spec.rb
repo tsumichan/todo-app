@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'ログイン' do
-  let(:user_name) { 'admin_user' }
+  let(:user_name) { 'user' }
   let(:password) { 'password' }
   let!(:user) { create :user }
   context 'ログインするとき' do
@@ -28,7 +28,7 @@ describe 'ログアウト' do
   before do
     @user = create(:user)
     visit '/login'
-    fill_in I18n.t('views.user.label.user_name'), with: 'admin_user'
+    fill_in I18n.t('views.user.label.user_name'), with: 'user'
     fill_in I18n.t('views.user.label.password'), with: 'password'
     click_button I18n.t('views.user.button.log_in')
   end
