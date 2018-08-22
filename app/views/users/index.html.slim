@@ -9,6 +9,7 @@ div.row
           th = t('views.user.label.id')
           th = t('views.user.label.user_name')
           th = t('views.user.label.role')
+          th タスク数
           th
           th
       tbody
@@ -17,6 +18,7 @@ div.row
             td = user.id
             td = user.name
             td = user.role_i18n
+            td = user.tasks.count
             td = link_to t('views.user.link_text.edit'), href='#'
             td = link_to t('views.user.link_text.delete'), href='#'
     = paginate @users
