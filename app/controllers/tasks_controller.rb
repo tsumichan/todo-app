@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?
+  before_action :require_login
 
   def index
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
