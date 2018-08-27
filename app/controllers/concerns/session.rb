@@ -9,7 +9,7 @@ module Session
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def is_current_user?
+  def logged_in?
     !current_user.nil?
   end
 

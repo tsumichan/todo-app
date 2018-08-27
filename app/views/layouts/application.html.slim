@@ -13,7 +13,7 @@ html
       div.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
           = link_to t('views.header.link.task_list'), root_path, class: 'nav-link'
-          - if is_current_user?
+          - if logged_in?
             span.nav-link.active = @current_user.name
             = link_to t('views.header.link.log_out'), logout_path, method: :delete, class: 'nav-link'
             = link_to t('views.header.link.admin_page'), users_path, class: 'nav-link' if @current_user.admin?
