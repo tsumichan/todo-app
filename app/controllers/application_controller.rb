@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
     end
 
-    def not_access_to_admin_page
+    def reject_common_access
       redirect_to root_path, flash: { warning: '管理者以外はアクセスできません' } unless current_user&.admin?
     end
 
