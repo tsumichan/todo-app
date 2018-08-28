@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :reject_common_access, if: -> { !current_user&.admin? }
 
   def index
