@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, flash: { warning: '管理者以外はアクセスできません' } unless current_user&.admin?
     end
 
-    def require_login
+    def reject_visitor_access
       redirect_to login_path, flash: { warning: t('views.user.message.require_login') } unless logged_in?
     end
 end

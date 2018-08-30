@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :require_login
+  before_action :reject_visitor_access
 
   def index
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
