@@ -8,7 +8,7 @@ describe 'タスク' do
   let!(:user) { create(:user) }
   before do
     visit '/login'
-    fill_in I18n.t('views.user.label.user_name'), with: 'test_user_name'
+    fill_in I18n.t('views.user.label.user_name'), with: user.name
     fill_in I18n.t('views.user.label.password'), with: 'password'
     click_button I18n.t('views.user.button.log_in')
   end
@@ -22,7 +22,7 @@ describe 'タスク' do
       select '完了', from: I18n.t('views.task.label.status')
       select '', from: I18n.t('views.task.label.priority')
       click_button I18n.t('views.task.button.submit')
-      expect(Task.exists?(title: title)).to be true
+      expect(Task.exists?(user_id: user.id)).to be true
       expect(page).to have_content title
     end
 
@@ -44,7 +44,7 @@ describe 'タスク' do
       visit edit_task_path(task.id)
       fill_in I18n.t('views.task.label.title'), with: title_edited
       click_button I18n.t('views.task.button.submit')
-      expect(Task.exists?(title: title_edited)).to be true
+      expect(Task.exists?(user_id: user.id, title: title_edited)).to be true
       expect(page).to have_content title_edited
     end
 
@@ -61,7 +61,7 @@ describe 'タスク' do
     it 'タスクを削除できること' do
       visit tasks_path
       click_link I18n.t('views.task.link_text.delete')
-      expect(Task.exists?(title: title)).not_to be true
+      expect(Task.exists?(user_id: user.id)).not_to be true
       expect(page).not_to have_content title
     end
 

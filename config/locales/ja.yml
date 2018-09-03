@@ -11,11 +11,16 @@ ja:
         low: "★"
         middle: "★★"
         high: "★★★"
+    user:
+      role:
+        admin: "管理者"
+        common: "一般"
   views:
     header:
       link:
         task_list: "タスク一覧"
         log_out: "ログアウト"
+        admin_page: "管理画面"
     task:
       label:
         title: "タスク名"
@@ -53,8 +58,10 @@ ja:
       truncate: "..."
     user:
       label:
+        id: "id"
         user_name: "ユーザー名"
         password: "パスワード"
+        role: "ロール"
       button:
         log_in: "ログイン"
       message:
@@ -62,6 +69,11 @@ ja:
         log_out_success: "ログアウトしました"
         log_in_failed: "ログインできませんでした"
         require_login: "ログインしてください"
+      link_text:
+        new: "新規ユーザーを作成"
+        edit: "編集"
+        delete: "削除"
+        back: "戻る"
   activerecord:
     errors:
       messages:
