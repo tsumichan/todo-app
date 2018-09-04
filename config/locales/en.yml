@@ -21,6 +21,9 @@ en:
         task_list: "Task List"
         log_out: "Log Out"
         admin_page: "Admin Page"
+    button:
+      submit: "Submit"
+      search: "Search"
     task:
       label:
         title: "Title"
@@ -28,9 +31,6 @@ en:
         due_at: "Due at"
         status: "Status"
         priority: "Priority"
-      button:
-        submit: "Submit"
-        search: "Search"
       title:
         new: "Create new task"
         edit: "Edit the task"

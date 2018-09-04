@@ -21,6 +21,9 @@ ja:
         task_list: "タスク一覧"
         log_out: "ログアウト"
         admin_page: "管理画面"
+    button:
+      submit: "登録"
+      search: "検索"
     task:
       label:
         title: "タスク名"
@@ -28,9 +31,6 @@ ja:
         due_at: "終了期限"
         status: "ステータス"
         priority: "優先度"
-      button:
-        submit: "登録"
-        search: "検索"
       title:
         new: "タスクを追加する"
         edit: "タスクを編集する"
