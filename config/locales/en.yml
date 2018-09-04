@@ -69,6 +69,10 @@ en:
         log_out_success: "Logout Successed"
         log_in_failed: "Login Failed"
         require_login: "Please Login"
+        created: "Created a new user"
+        updated: "Updated a user"
+        deleted: "Deleted a user"
+        delete_confirm: "Are you sure you want to delte this task?"
       link_text:
         new: "New"
         edit: "Edit"

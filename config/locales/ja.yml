@@ -69,6 +69,10 @@ ja:
         log_out_success: "ログアウトしました"
         log_in_failed: "ログインできませんでした"
         require_login: "ログインしてください"
+        created: "ユーザーを作成しました"
+        updated: "ロールを更新しました"
+        deleted: "ユーザーを削除しました"
+        delete_confirm: "本当に削除しますか？"
       link_text:
         new: "新規ユーザーを作成"
         edit: "編集"
