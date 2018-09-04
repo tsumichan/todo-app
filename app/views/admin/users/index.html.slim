@@ -19,6 +19,6 @@ div.row
             td = user.name
             td = user.role_i18n
             td = user.tasks.count
-            td = link_to t('views.user.link_text.edit'), href='#'
+            td = link_to t('views.user.link_text.edit'), edit_admin_user_path(user.id)
             td = link_to t('views.user.link_text.delete'), href='#'
     = paginate @users

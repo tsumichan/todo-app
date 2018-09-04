@@ -19,9 +19,16 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_users_path, flash: { success: t('views.user.message.updated') }
+    else
+      render :edit
+    end
   end
 
   def destroy

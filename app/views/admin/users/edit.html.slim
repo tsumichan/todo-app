@@ -1,0 +1,25 @@
+div.row
+  div.col-lg-8.mx-auto
+    - if @user.errors.any?
+      div.alert.alert-danger.alert-dismissible.fade.show
+        ul
+          - @user.errors.full_messages.each do |message|
+            li = message
+
+div.text-center
+  h1 = 'ユーザーを編集する'
+div.row
+  div.col-lg-8.mx-auto
+    = form_for [:admin, @user] do |f|
+      div.form-group.required
+        = f.label :name, 'user name', class: 'font-weight-bold control-label'
+        = f.text_field :name, class: 'form-control', readonly: true
+      div.form-group.required
+        = f.label :password, 'password', class: 'font-weight-bold control-label'
+        = f.password_field :password, class: 'form-control', readonly: true
+      div.form-group.required
+        = f.label :role, 'role', class: 'font-weight-bold control-label'
+        = f.select :role, role_select_options, { include_blank: false }, { class: 'form-control'}
+      div.form-group.text-center
+        = link_to t('views.user.link_text.back'), :back, class: 'btn btn-light btn-lg mx-5'
+        = f.submit t('views.button.submit'), class: 'btn btn-primary btn-lg mx-5'
