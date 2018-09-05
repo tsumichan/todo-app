@@ -12,13 +12,13 @@ div.row
   div.col-lg-8.mx-auto
     = form_for [:admin, @user] do |f|
       div.form-group.required
-        = f.label :name, 'user name', class: 'font-weight-bold control-label'
+        = f.label :name, t('views.user.label.user_name'), class: 'font-weight-bold control-label'
         = f.text_field :name, class: 'form-control', required: true
       div.form-group.required
-        = f.label :password, 'password', class: 'font-weight-bold control-label'
+        = f.label :password, t('views.user.label.password'), class: 'font-weight-bold control-label'
         = f.password_field :password, class: 'form-control', required: true
       div.form-group.required
-        = f.label :role, 'role', class: 'font-weight-bold control-label'
+        = f.label :role, t('views.user.label.role'), class: 'font-weight-bold control-label'
         = f.select :role, role_select_options, {}, { class: 'form-control', required: true }
       div.form-group.text-center
         = link_to t('views.user.link_text.back'), :back, class: 'btn btn-light btn-lg mx-5'
