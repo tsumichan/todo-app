@@ -1,11 +1,3 @@
-div.row
-  div.col-lg-8.mx-auto
-    - if @user.errors.any?
-      div.alert.alert-danger.alert-dismissible.fade.show
-        ul
-          - @user.errors.full_messages.each do |message|
-            li = message
-
 div.text-center
   h1 = 'ユーザーを編集する'
 div.row
