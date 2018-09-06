@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   namespace :admin do
     resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
+    get 'users/:id/tasks', to: 'tasks#show', as: 'user_tasks'
   end
 end

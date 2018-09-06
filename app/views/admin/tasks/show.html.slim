@@ -1,0 +1,22 @@
+div.row
+  div.col-lg-12
+    = link_to t('views.user.link_text.back'), :back, class: 'btn btn-light btn-lg'
+    h2.text-center.mb-3 タスク一覧
+    table.table.table-hover
+      thead.thead-light
+        tr
+          th = t('views.task.label.title')
+          th = t('views.task.label.due_at')
+          th = t('views.task.label.status')
+          th = t('views.task.label.priority')
+        - if @tasks.exists?
+          tbody
+            - @tasks.each do |task|
+              tr
+                td = task.title
+                td = l(task.due_at, format: :long) unless task.due_at.nil?
+                td = task.status_i18n
+                td = task.priority_i18n
+        - else
+          div = t('views.task.message.no_match_task')
+    = paginate @tasks
