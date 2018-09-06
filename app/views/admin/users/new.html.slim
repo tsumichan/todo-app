@@ -1,3 +1,5 @@
+div.text-center
+  h1 = 'ユーザーを作成する'
 div.row
   div.col-lg-8.mx-auto
     - if @user.errors.any?
@@ -5,9 +7,6 @@ div.row
         ul
           - @user.errors.full_messages.each do |message|
             li = message
-
-div.text-center
-  h1 = 'ユーザーを作成する'
 div.row
   div.col-lg-8.mx-auto
     = form_for [:admin, @user] do |f|
