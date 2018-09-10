@@ -26,12 +26,6 @@ describe 'User' do
       expect(user.errors.details[:name].any? { |e| e[:error] == :taken }).to be true
     end
 
-    it '4文字以下だと保存ができないこと' do
-      user.name = 'a' * 4
-      user.valid?
-      expect(user.errors.details[:name].any? { |e| e[:error] == :too_short }).to be true
-    end
-
     it '26文字以上だと保存ができないこと' do
       user.name = 'a' * 26
       user.valid?
