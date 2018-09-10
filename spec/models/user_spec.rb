@@ -70,4 +70,12 @@ describe 'User' do
       expect(user.errors.details[:role].any? { |e| e[:error] == :blank }).to be true
     end
   end
+
+  context 'ユーザーを削除したとき' do
+    let(:user) { create(:user)}
+    it '削除されたユーザーが持つタスクも削除されること' do
+      user.destroy
+      expect(Task.exists?(user_id: user.id)).not_to be true
+    end
+  end
 end

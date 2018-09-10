@@ -78,12 +78,6 @@ describe '管理画面' do
         click_link I18n.t('views.user.link_text.delete'), href: admin_user_path(user)
         expect(page).to have_content I18n.t('views.user.message.deleted')
       end
-
-      it '削除されたユーザーが持つタスクも削除されること' do
-        visit admin_users_path
-        click_link I18n.t('views.user.link_text.delete'), href: admin_user_path(user)
-        expect(Task.exists?(user_id: user.id)).not_to be true
-      end
     end
   end
 
