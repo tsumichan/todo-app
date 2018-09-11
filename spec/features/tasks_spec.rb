@@ -21,7 +21,7 @@ describe 'タスク' do
       fill_in I18n.t('views.task.label.due_at'), with: '2020/01/01 00:00'
       select '完了', from: I18n.t('views.task.label.status')
       select '', from: I18n.t('views.task.label.priority')
-      click_button I18n.t('views.task.button.submit')
+      click_button I18n.t('views.button.submit')
       expect(Task.exists?(user_id: user.id)).to be true
       expect(page).to have_content title
     end
@@ -33,7 +33,7 @@ describe 'タスク' do
       fill_in I18n.t('views.task.label.due_at'), with: '2020/01/01 00:00'
       select '完了', from: I18n.t('views.task.label.status')
       select '', from: I18n.t('views.task.label.priority')
-      click_button I18n.t('views.task.button.submit')
+      click_button I18n.t('views.button.submit')
       expect(page).to have_content I18n.t('views.task.message.created')
     end
   end
@@ -43,7 +43,7 @@ describe 'タスク' do
     it '加えた変更を更新すること' do
       visit edit_task_path(task.id)
       fill_in I18n.t('views.task.label.title'), with: title_edited
-      click_button I18n.t('views.task.button.submit')
+      click_button I18n.t('views.button.submit')
       expect(Task.exists?(user_id: user.id, title: title_edited)).to be true
       expect(page).to have_content title_edited
     end
@@ -51,7 +51,7 @@ describe 'タスク' do
     it '更新完了のフラッシュメッセージを表示すること' do
       visit edit_task_path(task.id)
       fill_in I18n.t('views.task.label.title'), with: '変更タスク'
-      click_button I18n.t('views.task.button.submit')
+      click_button I18n.t('views.button.submit')
       expect(page).to have_content I18n.t('views.task.message.updated')
     end
   end
@@ -88,7 +88,7 @@ describe 'タスク' do
     it '終了期限が近いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('views.task.sort.due_at'), from: 'sort'
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(approaching_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(not_approaching_task.id))
     end
@@ -100,7 +100,7 @@ describe 'タスク' do
     it '作成日時が新しいタスクが上に来ること' do
       visit tasks_path
       select I18n.t('views.task.sort.created_at'), from: 'sort'
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(new_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(old_task.id))
     end
@@ -112,7 +112,7 @@ describe 'タスク' do
     it '優先順が高いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('views.task.sort.priority_desc'), from: 'sort'
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(high_priority_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(low_priority_task.id))
     end
@@ -120,7 +120,7 @@ describe 'タスク' do
     it '優先順が低いタスクが上に来ること' do
       visit tasks_path
       select I18n.t('views.task.sort.priority_asc'), from: 'sort'
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       expect(page.all('tbody tr')[0]).to have_link('編集', href: edit_task_path(low_priority_task.id))
       expect(page.all('tbody tr')[1]).to have_link('編集', href: edit_task_path(high_priority_task.id))
     end
@@ -131,14 +131,14 @@ describe 'タスク' do
     it '入力された文字列でタスクを検索できること' do
       visit tasks_path
       fill_in :search, with: test_title
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       expect(page).to have_content test_title
     end
 
     it 'マッチするものがない場合、マッチするものがなかったことを知らせること' do
       visit tasks_path
       fill_in :search, with: 'サンプル'
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       expect(page).to have_content I18n.t('views.task.message.no_match_task')
     end
   end
@@ -147,7 +147,7 @@ describe 'タスク' do
     it '指定したステータスを持つタスクを検索すること' do
       visit tasks_path
       select I18n.t('enums.task.status.doing'), from: 'status'
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       searched_task = Task.search_by_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end
@@ -158,7 +158,7 @@ describe 'タスク' do
       visit tasks_path
       fill_in 'search', with: test_title
       select I18n.t('enums.task.status.doing'), from: 'status'
-      click_button I18n.t('views.task.button.search')
+      click_button I18n.t('views.button.search')
       searched_task = Task.search_by_title(test_title).search_by_status('doing')
       expect(page.all('tbody tr').count).to eq searched_task.count
     end

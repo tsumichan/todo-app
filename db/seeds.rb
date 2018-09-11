@@ -14,8 +14,8 @@ end
 
 10.times do |i|
   User.create(
-    name: Faker::Internet.user_name,
-    password:  Faker::Internet.password,
+    name: Faker::Internet.user_name(5..25),
+    password:  Faker::Internet.password(8..100),
     role: Faker::Number.between(0, 1)
   )
 end
