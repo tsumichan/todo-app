@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post '/login',   to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   namespace :admin do
-    resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
-    get 'users/:id/tasks', to: 'tasks#show', as: 'user_tasks'
+    resources :users, only: [:index, :new, :create, :edit, :update, :destroy] do
+      resources :tasks, only: [:index], module: :users
+    end
   end
 end
