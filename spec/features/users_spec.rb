@@ -79,6 +79,15 @@ describe '管理画面' do
         expect(page).to have_content I18n.t('views.user.message.deleted')
       end
     end
+
+    context '1人しかいない管理者ユーザーを削除するとき' do
+      it '削除できないようにすること' do
+        visit admin_users_path
+        click_link I18n.t('views.user.link_text.delete'), href: admin_user_path(admin_user)
+        expect(User.exists?(name: admin_user.name)).to be true
+        expect(page).to have_content I18n.t('views.user.message.last_admin')
+      end
+    end
   end
 
   describe '一般ユーザー' do
