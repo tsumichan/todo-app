@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     end
 
     def reject_common_access
-      redirect_to root_path, flash: { warning: '管理者以外はアクセスできません' } unless current_user&.admin?
+      render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html' unless current_user&.admin?
     end
 
     def reject_visitor_access
