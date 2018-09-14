@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe '管理画面' do
   describe '管理者ユーザー' do
-    let!(:admin_user) { create(:admin) }
+    let!(:admin_user) { create(:admin_user) }
     let(:user_name) { 'user_name' }
     before do
       visit login_path
