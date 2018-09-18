@@ -10,6 +10,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @labels = Label.all
   end
 
   def create
@@ -43,7 +44,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_at, :status, :priority)
+    params.require(:task).permit(:title, :description, :due_at, :status, :priority, label_ids: [])
   end
 
   def set_task
