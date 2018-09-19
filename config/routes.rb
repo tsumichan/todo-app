@@ -9,4 +9,8 @@ Rails.application.routes.draw do
       resources :tasks, only: [:index], module: :users
     end
   end
+
+  namespace :setting do
+    resources :labels, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
 end
