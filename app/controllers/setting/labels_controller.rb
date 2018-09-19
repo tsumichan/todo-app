@@ -1,6 +1,11 @@
 class Setting::LabelsController < ApplicationController
   before_action :reject_visitor_access
   before_action :set_label, only: [:edit, :update, :destroy]
+
+  def index
+    @labels = Label.all
+  end
+  
   def new
     @label = Label.new
   end
