@@ -2,5 +2,5 @@ class Label < ApplicationRecord
   has_many :task_labels
   has_many :tasks, through: :task_labels
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { minimum: 1, maximum: 15 }
 end
