@@ -103,9 +103,9 @@ describe '管理画面' do
       expect(page).not_to have_content I18n.t('views.header.link.admin_page')
     end
 
-    it 'ユーザー 一覧ページにアクセスできないこと' do
+    it '管理画面にアクセスすると404ページが表示されること' do
       visit admin_users_path
-      expect(page).not_to have_content 'ユーザー 一覧'
+      expect(page).to have_content 'ページが見つかりません'
     end
   end
 end
