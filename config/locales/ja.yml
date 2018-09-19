@@ -78,6 +78,17 @@ ja:
         edit: "編集"
         delete: "削除"
         back: "戻る"
+    label:
+      title:
+        list_of_labels: "ラベル一覧"
+        new: "新規ラベルを作成"
+      label:
+        name: "ラベル名"
+      link_text:
+        back: "戻る"
+      message:
+        no_match_label: "該当するラベルはありません"
+        created: "ラベルを作成しました"
   activerecord:
     errors:
       messages:
