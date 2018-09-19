@@ -3,9 +3,9 @@ class Setting::LabelsController < ApplicationController
   before_action :set_label, only: [:edit, :update, :destroy]
 
   def index
-    @labels = Label.all
+    @labels = Label.all.page(params[:page])
   end
-  
+
   def new
     @label = Label.new
   end
