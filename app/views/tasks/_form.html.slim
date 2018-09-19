@@ -30,7 +30,7 @@ div.row
         = f.select :priority, priority_select_options, {}, { class: 'form-control' }
       div.form-group
         = f.label :label_ids, 'ラベル', class: 'font-weight-bold'
-        = f.collection_check_boxes :label_ids, @labels, :id, :name, include_hidden: false do |b|
+        = f.collection_check_boxes :label_ids, @labels, :id, :name do |b|
           div.form-control.my-2
             = b.check_box
             = b.label { b.text }
