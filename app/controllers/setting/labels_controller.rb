@@ -13,7 +13,7 @@ class Setting::LabelsController < ApplicationController
   def create
     @label = Label.new(label_params)
     if @label.save
-      redirect_to setting_labels_path, flash: { success: t('views.task.message.created') }
+      redirect_to setting_labels_path, flash: { success: t('views.label.message.created') }
     else
       render :new
     end
