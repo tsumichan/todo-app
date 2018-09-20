@@ -11,7 +11,7 @@ class Setting::LabelsController < ApplicationController
   end
 
   def create
-    @label = Label.new(label_params)
+    @label = @current_user.labels.build(label_params)
     if @label.save
       redirect_to setting_labels_path, flash: { success: t('views.label.message.created') }
     else
