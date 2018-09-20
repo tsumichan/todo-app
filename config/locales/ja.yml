@@ -73,6 +73,7 @@ ja:
         updated: "ロールを更新しました"
         deleted: "ユーザーを削除しました"
         delete_confirm: "本当に削除しますか？"
+        last_admin: "管理者アカウントは最低1つ必要です"
       link_text:
         new: "新規ユーザーを作成"
         edit: "編集"
