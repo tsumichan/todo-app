@@ -1,4 +1,4 @@
-class Setting::LabelsController < ApplicationController
+class LabelsController < ApplicationController
   before_action :reject_visitor_access
   before_action :set_label, only: [:edit, :update, :destroy]
 
@@ -13,7 +13,7 @@ class Setting::LabelsController < ApplicationController
   def create
     @label = @current_user.labels.build(label_params)
     if @label.save
-      redirect_to setting_labels_path, flash: { success: t('views.label.message.created') }
+      redirect_to labels_path, flash: { success: t('views.label.message.created') }
     else
       render :new
     end

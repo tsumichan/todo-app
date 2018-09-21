@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'tasks#index'
   resources :tasks
+  resources :labels, only: [:index, :new, :create, :edit, :update, :destroy]
   get '/login',    to: 'sessions#new'
   post '/login',   to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
@@ -8,9 +9,5 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :edit, :update, :destroy] do
       resources :tasks, only: [:index], module: :users
     end
-  end
-
-  namespace :setting do
-    resources :labels, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 end
