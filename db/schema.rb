@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_081705) do
+ActiveRecord::Schema.define(version: 2018_09_21_064440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_09_20_081705) do
     t.integer "label_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id", "label_id"], name: "index_task_labels_on_task_id_and_label_id", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|
