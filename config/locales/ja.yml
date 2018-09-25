@@ -21,6 +21,7 @@ ja:
         task_list: "タスク一覧"
         log_out: "ログアウト"
         admin_page: "管理画面"
+        label_list: "ラベル一覧"
     button:
       submit: "登録"
       search: "検索"
