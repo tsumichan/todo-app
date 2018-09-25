@@ -21,6 +21,7 @@ en:
         task_list: "Task List"
         log_out: "Log Out"
         admin_page: "Admin Page"
+        label_list: "Label List"
     button:
       submit: "Submit"
       search: "Search"
