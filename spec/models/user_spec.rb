@@ -73,9 +73,15 @@ describe 'User' do
 
   context 'ユーザーを削除したとき' do
     let(:user) { create(:user)}
+    let(:admin_user) { create(:admin_user) }
     it '削除されたユーザーが持つタスクも削除されること' do
       user.destroy
       expect(Task.exists?(user_id: user.id)).not_to be true
+    end
+
+    it '最後の管理者ユーザーを削除した場合は削除されないこと' do
+      admin_user.destroy
+      expect(User.exists?(id: admin_user.id)).to be true
     end
   end
 end
