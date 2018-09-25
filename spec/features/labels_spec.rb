@@ -31,7 +31,7 @@ describe 'ラベル' do
   end
 
   context '既存のラベルを更新するとき' do
-    let(:label) { create(:label) }
+    let!(:label) { create(:label, user_id: user.id) }
     it '加えた変更を更新すること' do
       visit edit_label_path(label.id)
       fill_in I18n.t('views.label.label.name'), with: label_name_edited
@@ -49,7 +49,7 @@ describe 'ラベル' do
   end
 
   context '既存のタスクを削除するとき' do
-    let(:label) { create(:label) }
+    let!(:label) { create(:label, user_id: user.id) }
     it 'ラベルを削除できること' do
       visit labels_path
       click_link I18n.t('views.label.link_text.delete')
