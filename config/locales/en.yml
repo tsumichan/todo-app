@@ -21,6 +21,7 @@ en:
         task_list: "Task List"
         log_out: "Log Out"
         admin_page: "Admin Page"
+        label_list: "Label List"
     button:
       submit: "Submit"
       search: "Search"
@@ -79,6 +80,17 @@ en:
         edit: "Edit"
         delete: "Delete"
         back: "Back"
+    label:
+      title:
+        list_of_labels: "List of labels"
+        new: "New"
+      label:
+        name: "Label name"
+      link_text:
+        back: "Back"
+      message:
+        no_match_label: "There is no matching label"
+        created: "Created a new label"
   activerecord:
     errors:
       messages:
