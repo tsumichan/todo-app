@@ -87,6 +87,8 @@ ja:
       label:
         name: "ラベル名"
       link_text:
+        edit: "編集"
+        delete: "削除"
         back: "戻る"
       message:
         no_match_label: "該当するラベルはありません"

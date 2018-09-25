@@ -14,8 +14,8 @@ div.row
           - @labels.each do |label|
             tr
               td = label.name
-              td = link_to t('views.user.link_text.edit'), edit_label_path(label.id)
-              td = link_to t('views.user.link_text.delete'), label_path(label.id), method: :delete, data: {confirm: t('views.label.message.delete_confirm')}, class: 'delete-link'
+              td = link_to t('views.label.link_text.edit'), edit_label_path(label.id)
+              td = link_to t('views.label.link_text.delete'), label_path(label.id), method: :delete, data: {confirm: t('views.label.message.delete_confirm')}, class: 'delete-link'
       - else
         div = t('views.task.message.no_match_task')
     = paginate @labels

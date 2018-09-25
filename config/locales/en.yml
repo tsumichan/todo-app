@@ -87,6 +87,8 @@ en:
       label:
         name: "Label name"
       link_text:
+        edit: "Edit"
+        delete: "Delete"
         back: "Back"
       message:
         no_match_label: "There is no matching label"
