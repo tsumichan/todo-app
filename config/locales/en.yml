@@ -72,7 +72,7 @@ en:
         created: "Created a new user"
         updated: "Updated a user"
         deleted: "Deleted a user"
-        delete_confirm: "Are you sure you want to delte this task?"
+        delete_confirm: "Are you sure you want to delte this user?"
         last_admin: "At least one administrator account is required"
       link_text:
         new: "New"
