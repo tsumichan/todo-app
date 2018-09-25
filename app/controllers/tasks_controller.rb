@@ -10,7 +10,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @labels = Label.all
+    @labels = @current_user.labels.all
   end
 
   def create
