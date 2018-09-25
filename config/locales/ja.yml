@@ -83,7 +83,8 @@ ja:
     label:
       title:
         list_of_labels: "ラベル一覧"
-        new: "新規ラベルを作成"
+        new: "ラベルを作成する"
+        edit: "ラベルを編集する"
       label:
         name: "ラベル名"
       link_text:
