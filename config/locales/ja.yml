@@ -90,6 +90,9 @@ ja:
       message:
         no_match_label: "該当するラベルはありません"
         created: "ラベルを作成しました"
+        updated: "ラベルを更新しました"
+        deleted: "ラベルを削除しました"
+        delete_confirm: "本当に削除しますか？"
   activerecord:
     errors:
       messages:

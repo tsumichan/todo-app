@@ -18,6 +18,23 @@ class LabelsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+  end
+
+  def update
+    if @label.update(label_params)
+      redirect_to labels_path, flash: { success: t('views.label.message.updated') }
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @label.destroy
+      redirect_to labels_path, flash: { success: t('views.label.message.deleted') }
+  end
+
   private
 
   def label_params
