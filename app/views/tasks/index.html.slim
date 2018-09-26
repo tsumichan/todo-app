@@ -39,9 +39,6 @@ div.row
         label.small ステータスで絞り込み
         = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
       div.form-group
-        label.small ラベルで絞り込み
-        = select_tag :label, options_for_select(@labels), prompt: 'ラベル（未選択）', class: 'form-control'
-      div.form-group
         label.small ソートする
         = select_tag :sort, options_for_select(@sorts), class: 'form-control'
       div.form-group = submit_tag t('views.button.search'), class: 'btn btn-outline-secondary'
