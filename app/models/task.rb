@@ -20,4 +20,7 @@ class Task < ApplicationRecord
       end
     order(option)
   }
+  scope :search_by_labels, -> label_ids {
+    joins(:task_labels).where(task_labels: { label_id: label_ids }).distinct if label_ids.present?
+  }
 end
