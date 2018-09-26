@@ -7,7 +7,7 @@ div.row
       thead.thead-light
         tr
           th = t('views.task.label.title')
-          th ラベル
+          th = t('views.task.label.label')
           th = t('views.task.label.due_at')
           th = t('views.task.label.status')
           th = t('views.task.label.priority')
@@ -20,7 +20,7 @@ div.row
                 td = link_to task.title, task
                 td
                   - task.labels.each do |l|
-                    label.badge.badge-info = l.name 
+                    label.badge.badge-info = l.name
                 td = l(task.due_at, format: :long) unless task.due_at.nil?
                 td = task.status_i18n
                 td = task.priority_i18n
@@ -38,6 +38,9 @@ div.row
       div.form-group
         label.small ステータスで絞り込み
         = select_tag :status, options_for_select(@statuses), prompt: 'ステータス（未選択）', class: 'form-control'
+      div.form-group
+        label.small ラベルで絞り込み
+        = select_tag :label, options_for_select(@labels), prompt: 'ラベル（未選択）', class: 'form-control'
       div.form-group
         label.small ソートする
         = select_tag :sort, options_for_select(@sorts), class: 'form-control'
