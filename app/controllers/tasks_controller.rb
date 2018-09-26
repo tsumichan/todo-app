@@ -1,17 +1,16 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :reject_visitor_access
+  before_action :set_labels, only: [:index, :new, :edit]
 
   def index
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
     @sorts = [t('views.task.sort.created_at'), 0], [t('views.task.sort.due_at'), 1], [t('views.task.sort.priority_desc'), 2], [t('views.task.sort.priority_asc'), 3]
     @tasks = @current_user.tasks.search_by_title(params[:search]).search_by_status(params[:status]).order_by(params[:sort]).page(params[:page])
-    @labels = @current_user.labels
   end
 
   def new
     @task = Task.new
-    @labels = @current_user.labels
   end
 
   def create
@@ -27,7 +26,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @labels = @current_user.labels
   end
 
   def update
@@ -51,5 +49,9 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def set_labels
+    @labels = @current_user.labels
   end
 end
