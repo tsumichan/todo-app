@@ -73,7 +73,7 @@ en:
         created: "Created a new user"
         updated: "Updated a user"
         deleted: "Deleted a user"
-        delete_confirm: "Are you sure you want to delte this task?"
+        delete_confirm: "Are you sure you want to delte this user?"
         last_admin: "At least one administrator account is required"
       link_text:
         new: "New"
@@ -87,10 +87,15 @@ en:
       label:
         name: "Label name"
       link_text:
+        edit: "Edit"
+        delete: "Delete"
         back: "Back"
       message:
         no_match_label: "There is no matching label"
         created: "Created a new label"
+        upadted: "Updated a lebel"
+        deleted: "Deleted a label"
+        delete_confirm: "Are you sure you want to delte this label?"
   activerecord:
     errors:
       messages:

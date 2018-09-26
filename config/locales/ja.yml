@@ -83,14 +83,20 @@ ja:
     label:
       title:
         list_of_labels: "ラベル一覧"
-        new: "新規ラベルを作成"
+        new: "ラベルを作成する"
+        edit: "ラベルを編集する"
       label:
         name: "ラベル名"
       link_text:
+        edit: "編集"
+        delete: "削除"
         back: "戻る"
       message:
         no_match_label: "該当するラベルはありません"
         created: "ラベルを作成しました"
+        updated: "ラベルを更新しました"
+        deleted: "ラベルを削除しました"
+        delete_confirm: "本当に削除しますか？"
   activerecord:
     errors:
       messages:
