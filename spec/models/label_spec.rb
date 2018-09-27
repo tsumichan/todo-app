@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'Label' do
   describe '#name' do
-    let(:label) { build(:label) }
+    let(:user) { create(:user) }
+    let(:label) { build(:label, user_id: user.id) }
     it '正常に保存できること' do
       expect(label).to be_valid
     end
