@@ -44,7 +44,7 @@ div.row
         - @labels.each do |l|
           div.form-control.my-2
             = check_box_tag 'label_ids[]', l.id
-            = label_tag l.name
+            = label_tag :label_ids_, l.name
       div.form-group
         label.small ソートする
         = select_tag :sort, options_for_select(@sorts), class: 'form-control'
