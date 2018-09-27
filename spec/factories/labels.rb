@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :label do
-    name { "Label1" }
     user { create(:user) }
+    sequence(:name) { |n| "Label#{n}"}
   end
 end
