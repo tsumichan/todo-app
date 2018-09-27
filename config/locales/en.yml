@@ -32,6 +32,7 @@ en:
         due_at: "Due at"
         status: "Status"
         priority: "Priority"
+        label: "Label"
       title:
         new: "Create new task"
         edit: "Edit the task"

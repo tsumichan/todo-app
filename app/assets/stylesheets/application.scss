@@ -27,11 +27,19 @@
 .delete-link {
   color: red;
 }
-
+.container {
+    max-width: 70%;
+}
 // タスク
 .form-group.required .control-label:after {
   color: red;
   content: "*";
   position: absolute;
   margin-left: 5px;
+}
+.badge {
+  margin: 0 1.5px;
+}
+.form-control > label {
+  margin: 0 5px;
 }

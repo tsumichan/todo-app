@@ -7,6 +7,7 @@ div.row
       thead.thead-light
         tr
           th = t('views.task.label.title')
+          th = t('views.task.label.label')
           th = t('views.task.label.due_at')
           th = t('views.task.label.status')
           th = t('views.task.label.priority')
@@ -17,6 +18,9 @@ div.row
             - @tasks.each do |task|
               tr
                 td = link_to task.title, task
+                td
+                  - task.labels.each do |l|
+                    label.badge.badge-info = l.name
                 td = l(task.due_at, format: :long) unless task.due_at.nil?
                 td = task.status_i18n
                 td = task.priority_i18n
