@@ -153,6 +153,19 @@ describe 'タスク' do
     end
   end
 
+  context 'タスクをラベルで検索するとき' do
+    before do
+      has_labels_task = create(:task, user_id: user.id)
+      labels = create_list(:label, 2, tasks:[has_labels_task], user_id: user.id)
+    end
+    it '指定したラベルを持つタスクを検索すること' do
+      visit tasks_path
+      check 'label_ids_', match: :first
+      searched_task = Task.search_by_labels(user.tasks.first.labels)
+      expect(page.all('tbody tr').count).to eq searched_task.count
+    end
+  end
+
   context 'タイトルとステータスで検索するとき' do
     it '指定したタイトルとステータスを持つタスクを検索すること' do
       visit tasks_path
