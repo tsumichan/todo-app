@@ -32,6 +32,7 @@ ja:
         due_at: "終了期限"
         status: "ステータス"
         priority: "優先度"
+        label: "ラベル"
       title:
         new: "タスクを追加する"
         edit: "タスクを編集する"

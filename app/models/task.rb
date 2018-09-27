@@ -4,6 +4,8 @@ class Task < ApplicationRecord
   enum status: { todo: 0, doing: 1, done: 2 }
   enum priority: { nothing: 0, low: 1, middle: 2, high: 3 }
   belongs_to :user, counter_cache: :tasks_count
+  has_many :task_labels
+  has_many :labels, through: :task_labels
 
   scope :search_by_title, ->(word) { where('title LIKE ?', "%#{word}%") if word.present? }
   scope :search_by_status, ->(status) { where(status: status) if status.present? }

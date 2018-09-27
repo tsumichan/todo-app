@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :reject_visitor_access
+  before_action :set_labels, only: [:index, :new, :edit]
 
   def index
     @statuses = Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v]}
@@ -43,10 +44,14 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_at, :status, :priority)
+    params.require(:task).permit(:title, :description, :due_at, :status, :priority, label_ids: [])
   end
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def set_labels
+    @labels = @current_user.labels
   end
 end
