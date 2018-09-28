@@ -153,12 +153,12 @@ describe 'タスク' do
     end
   end
 
-  context 'タスクをラベルで検索するとき' do
+  context 'タスクをラベルで絞り込むとき' do
     before do
       has_labels_task = create(:task, user_id: user.id)
       labels = create_list(:label, 2, tasks:[has_labels_task], user_id: user.id)
     end
-    it '指定したラベルを持つタスクを検索すること' do
+    it '指定したラベルを含んでいるタスクがすべて表示されること' do
       visit tasks_path
       check 'label_ids_', match: :first
       searched_task = Task.search_by_labels(user.tasks.first.labels)
