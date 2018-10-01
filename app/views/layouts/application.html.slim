@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title TodoApp
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/ja.js"
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-4
+      = link_to 'Todo App', root_path, class: 'navbar-brand'
+      div.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          = link_to t('views.header.link.task_list'), root_path, class: 'nav-link'
+          = link_to t('views.header.link.label_list'), labels_path, class: 'nav-link'
+          - if logged_in?
+            span.nav-link.active = @current_user.name
+            = link_to t('views.header.link.log_out'), logout_path, method: :delete, class: 'nav-link'
+            = link_to t('views.header.link.admin_page'), admin_users_path, class: 'nav-link' if @current_user.admin?
+    div.container
+      - flash.each do |key, value|
+        = content_tag(:div, class: "alert alert-#{key} alert-dismissible fade show", role: "alert") do
+          = value
+          button.close type='button' data-dismiss="alert" aria-label="Close"
+            span aria-hidden="true" &times;
+
+      = yield

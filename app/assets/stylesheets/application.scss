@@ -1,0 +1,45 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import "tempusdominus-bootstrap-4.css";
+@import "font-awesome";
+
+// トップページ
+#new-task-button, #new-label-button {
+  margin-bottom: 20px;
+}
+.pagination {
+  justify-content: center;
+}
+.delete-link {
+  color: red;
+}
+.container {
+    max-width: 70%;
+}
+// タスク
+.form-group.required .control-label:after {
+  color: red;
+  content: "*";
+  position: absolute;
+  margin-left: 5px;
+}
+.badge {
+  margin: 0 1.5px;
+}
+.form-control > label {
+  margin: 0 5px;
+}

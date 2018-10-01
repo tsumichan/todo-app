@@ -1,0 +1,13 @@
+div.text-center
+    h1 ログイン
+div.row
+  div.col-lg-8.mx-auto
+    = form_for :session, url:login_path do |f|
+      div.form-group.required
+        = f.label :name, t('views.user.label.user_name'), class: 'font-weight-bold control-label'
+        = f.text_field :name, class: 'form-control', required: true
+      div.form-group.required
+        = f.label :password, t('views.user.label.password'), class: 'font-weight-bold control-label'
+        = f.password_field :password, class: 'form-control', required: true
+      div.text-center
+        = f.submit t('views.user.button.log_in'), class: 'btn btn-primary btn-block'

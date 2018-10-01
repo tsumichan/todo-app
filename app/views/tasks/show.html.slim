@@ -1,0 +1,20 @@
+div.container
+  div.text-center
+    h1 = @task.title
+  div.row
+    div.col-lg-8.mx-auto
+      div.form-group
+        label.font-weight-bold = t('views.task.label.description')
+        div.form-control-plaintext.pl-3 = @task.description
+      div.form-group
+        label.font-weight-bold = t('views.task.label.due_at')
+        div.form-control-plaintext.pl-3 = @task.due_at.strftime("%Y年%m月%d日 %H時%M分")
+      div.form-group
+        label.font-weight-bold = t('views.task.label.status')
+        div.form-control-plaintext.pl-3 = @task.status_i18n
+      div.form-group
+        label.font-weight-bold = t('views.task.label.priority')
+        div.form-control-plaintext.pl-3 = @task.priority_i18n
+      div.form-group.text-center
+        = link_to t('views.task.link_text.back'), root_path, class: 'btn btn-light btn-lg mx-5'
+        = link_to t('views.task.link_text.edit'), edit_task_path, class: 'btn btn-primary btn-lg mx-5'

@@ -1,0 +1,21 @@
+div.row
+  div.col-lg-8.offset-2
+    h2 = t('views.label.title.list_of_labels')
+    div.text-right
+      = link_to t('views.label.title.new'), new_label_path, class: 'btn btn-info', id: 'new-label-button'
+    table.table.table-hover
+      thead.thead-light
+        tr
+          th = t('views.label.label.name')
+          th width='10%'
+          th width='10%'
+      - if @labels.exists?
+        tbody
+          - @labels.each do |label|
+            tr
+              td = label.name
+              td = link_to t('views.label.link_text.edit'), edit_label_path(label.id)
+              td = link_to t('views.label.link_text.delete'), label_path(label.id), method: :delete, data: {confirm: t('views.label.message.delete_confirm')}, class: 'delete-link'
+      - else
+        div = t('views.label.message.no_match_label')
+    = paginate @labels
