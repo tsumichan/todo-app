@@ -56,5 +56,16 @@ describe 'Task' do
         expect(Task.search_by_status('todo')).not_to include(not_come_up_task)
       end
     end
+
+    context '#search_by_labels' do
+      let!(:user) { create(:user) }
+      let!(:no_labels_task) { create(:task) }
+      let!(:has_labels_task) { create(:task, user_id: user.id) }
+      let!(:labels) { create_list(:label, 2, tasks:[has_labels_task], user_id: user.id) }
+      it '指定されたラベルのタスクを返す' do
+        expect(Task.search_by_labels(has_labels_task.labels)).to include(has_labels_task)
+        expect(Task.search_by_labels(has_labels_task.labels)).not_to include(no_labels_task)
+      end
+    end
   end
 end
