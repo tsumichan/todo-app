@@ -6,18 +6,18 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   before_action :set_locale
 
-  def render_404(e = nil)
-    if e
-      logger.error e.inspect
-      logger.error e.backtrace.join("\n")
+  def render_404(error = nil)
+    if error
+      logger.error error.inspect
+      logger.error error.backtrace.join("\n")
     end
     render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
   end
 
-  def render_500(e = nil)
-    if e
-      logger.error e.inspect
-      logger.error e.backtrace.join("\n")
+  def render_500(error = nil)
+    if error
+      logger.error error.inspect
+      logger.error error.backtrace.join("\n")
     end
     render file: Rails.root.join('public/500.html'), status: 500, layout: false, content_type: 'text/html'
   end
