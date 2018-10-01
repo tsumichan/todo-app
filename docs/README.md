@@ -2,7 +2,6 @@
 
 ### task_model
 - id(integer)
-- user_id(integer)
 - title(string)
 - description(string)
 - due_at(datetime)
@@ -10,16 +9,18 @@
 - priority(integer)
 - created_at(datetime)
 - updated_at(datetime)
+- user_id(integer)
 
 ### user_model
 - id(integer)
 - name(string)
-- password(string)
 - role(integer)
 - created_at(datetime)
 - updated_at(datetime)
+- password_digest(string)
+- tasks_count(integer)
 
-### task_label_nodel
+### task_label_model
 - id(integer)
 - task_id(integer)
 - label_id(integer)
@@ -31,3 +32,4 @@
 - name(string)
 - created_at(datetime)
 - updated_at(datetime)
+- user_id(integer)
