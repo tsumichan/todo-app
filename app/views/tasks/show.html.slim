@@ -8,7 +8,7 @@ div.container
         div.form-control-plaintext.pl-3 = @task.description
       div.form-group
         label.font-weight-bold = t('views.task.label.due_at')
-        div.form-control-plaintext.pl-3 = @task.due_at.strftime("%Y年%m月%d日 %H時%M分")
+        div.form-control-plaintext.pl-3 = @task.due_at&.strftime("%Y年%m月%d日 %H時%M分")
       div.form-group
         label.font-weight-bold = t('views.task.label.status')
         div.form-control-plaintext.pl-3 = @task.status_i18n
