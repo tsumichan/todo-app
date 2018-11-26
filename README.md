@@ -4,7 +4,7 @@
 
 ## このリポジトリについて
 https://github.com/everyleaf/el-training をやっています
-
+#
 ## デプロイ方法
 1. [Heroku](https://heroku.com/)のアカウントを取得
 2. 以下からデプロイできます↓  
@@ -16,5 +16,5 @@ https://github.com/everyleaf/el-training をやっています
 ```
 Ruby v2.5.1
 Rails v5.2.0
-MySQL v5.6
+MySQL v5.6.41
 ```
