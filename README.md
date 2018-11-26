@@ -16,5 +16,5 @@ https://github.com/everyleaf/el-training をやっています
 ```
 Ruby v2.5.1
 Rails v5.2.0
-PostgreSQL v10.4
+MySQL v5.6
 ```
