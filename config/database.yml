@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: mysql2
-  host: localhost
+  host: <%= ENV['DB_HOST'] %>
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: tsumichan
