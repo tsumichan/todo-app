@@ -189,4 +189,13 @@ describe 'タスク' do
       expect(page.all('tbody tr').count).to eq Kaminari.config.default_per_page
     end
   end
+
+  context 'タスクに期限が設定されていないとき' do
+    let!(:task) { create(:task, due_at: nil, user_id: user.id) }
+    it 'タスク詳細ページでタスクの詳細が表示されること' do
+      visit tasks_path
+      click_link title
+      expect(page).to have_content('テスト用タスクです')
+    end
+  end
 end
