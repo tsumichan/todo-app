@@ -195,7 +195,7 @@ describe 'タスク' do
     it 'タスク詳細ページでタスクの詳細が表示されること' do
       visit tasks_path
       click_link title
-      expect(page).to have_content('テスト用タスクです')
+      expect(page).to have_http_status 200
     end
   end
 end
